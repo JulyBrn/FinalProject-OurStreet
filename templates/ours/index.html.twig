@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+     <link rel="stylesheet" type="text/css" href="{{ asset('css/artist.css') }}"/>
+{% endblock %}
+
+{% block body %}
+ <div class="artist-img">
+        <figure>
+            <a href="{{ path('show_artiste') }}">
+                <img src="{{ asset('img/gremsprofil.jpg')}}" alt="Elephant at sunset">
+            </a>
+            <figcaption>Artiste</figcaption>
+        </figure>
+        <figure>
+            <img src="{{ asset('img/gremsprofil.jpg')}}" alt="Elephant at sunset">
+            <figcaption>Artiste</figcaption>
+        </figure>
+        <figure>
+            <img src="{{ asset('img/gremsprofil.jpg')}}" alt="Elephant at sunset">
+            <figcaption>Artiste</figcaption>
+        </figure>
+    </div>
+
+{% endblock %}

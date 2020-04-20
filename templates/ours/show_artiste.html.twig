@@ -1,0 +1,25 @@
+{% extends 'base.html.twig'%}
+
+ {% block stylesheets %}
+ <link rel="stylesheet" type="text/css" href="{{ asset('css/artistPage.css') }}"/>
+{% endblock %}
+
+
+{% block body %}
+<div class="artist-container">
+<div class="left">
+    <img src="../img/gremsprofil.jpg" alt="Elephant at sunset">
+    <div class="followArtist">
+        <svg width="30px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
+        <p>Suivre l'artiste</p>
+    </div>  
+</div>
+
+<div class="right">
+    <h1> Artiste </h1>
+    <div class="underName"></div>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</div>
+</div>
+
+{% endblock %}

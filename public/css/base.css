@@ -1,0 +1,179 @@
+@charset "utf-8";
+
+/* Start reset */
+
+* {
+	margin: 0;
+	padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.03);
+    color: #333;
+    font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* End Reset */
+
+/* Header */
+
+.header-main {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    display: flex;
+     background: #fff;                                                                                                                                                                                                                                                                                                                                                                                                            
+}
+
+.header-main h1 {
+    flex: 2;
+    margin-left: 20px;
+}
+
+ .header-main nav {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-main a {
+    color: #333;
+    transition: 0.5s ease;
+    font-size: 18px;
+}
+
+.header-main a:hover {
+    color: blue;
+    transform: scale(1.1);
+}
+
+.header-main a svg {
+    padding-top: 25px;
+}
+
+.under-navbar {
+    height: 80px;
+}
+
+/* End Header */
+
+/* dialog overlay */
+.c-dialog {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: .5s;
+}
+
+/* dialog box */
+.c-dialog_box {
+  width: 400px;
+  margin: auto;
+  background-color: white;
+  border: 2px solid blue;
+  border-radius: 10px;
+  height: auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  padding: 20px;
+
+
+}
+
+/* hidden dialog */
+.c-dialog[aria-hidden="true"] {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dialog-close {
+    text-align: right;
+    width: 100%;
+    font-size: 15px;
+    color: #333;
+}
+
+#dialog-title {
+    text-align: center;
+    padding: 25px;
+}
+
+.signin {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#dialog-desc {
+    text-align: center;
+    font-size: 15px;
+    padding-right: 5px;
+}
+
+.signin a {
+    text-decoration: none;
+    color: blue;
+    font-size: 15px;
+}
+
+.dialog-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+ .email, .password, .name, .surname {
+     width: 70%;
+     margin: 0 auto;
+     height: 40px;
+     border: 1px solid blue;
+     border-radius: 3px;
+     margin-bottom: 10px;
+     padding: 10px;
+ }
+
+ .dialog-btn {
+    width: 30%;
+    margin: 0 auto;
+    height: 40px;
+    border-radius: 3px;
+    margin-top: 20px;
+    font-size: 15px;
+    color: white;
+    background: blue;
+    opacity: 0.8;
+ }
+
+ .dialog-btn:hover {
+     cursor: pointer;
+     opacity: 1;
+ }
+
