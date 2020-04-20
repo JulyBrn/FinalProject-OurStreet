@@ -32,13 +32,6 @@ a {
 
 /* End Reset */
 
-.artist-img {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: 50px auto;
-}
-
 figure {
     width: 33%;
     text-align: center;
@@ -62,16 +55,13 @@ figure figcaption {
     font-weight: bold;
 }
 
-.artist-img1 {
-    width: 100%;
+.artistes{
     display: flex;
-    flex-direction: row;
-    margin-top: 100px;
+    flex-wrap: wrap;
 }
 
-.artist-img2 {
-    width: 100%;
+.artist-img{    
     display: flex;
     flex-direction: row;
-    margin-top: 100px;
+    margin: 50px;
 }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Artiste;
 
 class OursController extends AbstractController
 {
@@ -12,8 +13,13 @@ class OursController extends AbstractController
      */
     public function index()
     {
+        $repo = $this->getDoctrine()->getRepository(Artiste::class);
+
+        $artistes = $repo->findAll();
+
         return $this->render('ours/index.html.twig', [
             'controller_name' => 'OursController',
+            'artistes' => $artistes
         ]);
     }
 
@@ -34,10 +40,16 @@ class OursController extends AbstractController
     }
 
     /**
-     * @Route("/artistes/01", name="show_artiste")
+     * @Route("/artistes/{id}", name="show_artiste")
      */
-    public function show_artiste()
+    public function show_artiste($id)
     {
-        return $this->render('ours/show_artiste.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Artiste::class);
+
+        $artiste = $repo->find($id);
+
+        return $this->render('ours/show_artiste.html.twig', [
+        'artiste' => $artiste
+        ]);
     }
 }

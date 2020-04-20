@@ -5,21 +5,17 @@
 {% endblock %}
 
 {% block body %}
- <div class="artist-img">
-        <figure>
-            <a href="{{ path('show_artiste') }}">
-                <img src="{{ asset('img/gremsprofil.jpg')}}" alt="Elephant at sunset">
-            </a>
-            <figcaption>Artiste</figcaption>
-        </figure>
-        <figure>
-            <img src="{{ asset('img/gremsprofil.jpg')}}" alt="Elephant at sunset">
-            <figcaption>Artiste</figcaption>
-        </figure>
-        <figure>
-            <img src="{{ asset('img/gremsprofil.jpg')}}" alt="Elephant at sunset">
-            <figcaption>Artiste</figcaption>
-        </figure>
-    </div>
+
+<div class="artistes">
+    {% for artiste in artistes %}
+        <div class="artist-img">
+            <figure>
+                <a href="{{ path('show_artiste',{'id': artiste.id}) }}">
+                    <img src="{{ artiste.image }}" alt="Elephant at sunset">
+                </a>
+            <figcaption>{{ artiste.name }}</figcaption>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
