@@ -33,7 +33,6 @@ a {
 /* End Reset */
 
 figure {
-    width: 33%;
     text-align: center;
     transition: 0.5s ease;
 }
@@ -51,17 +50,17 @@ figure img {
 
 figure figcaption {
     padding-top: 15px;
-    font-family: 'Roboto', 'Arial', sans-serif;
     font-weight: bold;
 }
 
 .artistes{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 50px;
 }
 
 .artist-img{    
-    display: flex;
-    flex-direction: row;
-    margin: 50px;
+    margin: 60px;
 }
