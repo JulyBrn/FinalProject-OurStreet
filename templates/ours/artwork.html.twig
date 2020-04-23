@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+
+<div class="artistes">
+    {% for artwork in artworks %}
+        <div class="artist-img">
+            <figure>
+                <a href="{{ path('show_artwork',{'id': artwork.id}) }}">
+                    <img src="{{ artwork.picture }}" alt="Elephant at sunset">
+                </a>
+            <figcaption>{{ artwork.name }}</figcaption>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form action="{{ path('login') }}" method="post" class="dialog-form">
+        <input type="email" id="email" placeholder="Email" class="email" required>
+        <input type="password" id="password" placeholder="Mot de passe" class="password" required>
+        <button type="submit" class="dialog-btn">Se connecter</button>
+    </form>
+{% endblock %}

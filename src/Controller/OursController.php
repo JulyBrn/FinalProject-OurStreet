@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Artiste;
+use App\Entity\Artwork;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class OursController extends AbstractController
 {
@@ -50,6 +51,35 @@ class OursController extends AbstractController
 
         return $this->render('ours/show_artiste.html.twig', [
         'artiste' => $artiste
+        ]);
+    }
+
+    /**
+     * @Route("/artwork", name="artwork")
+     */
+    public function artwork()
+    {
+        $repo = $this->getDoctrine()->getRepository(Artwork::class);
+
+        $artworks = $repo->findAll();
+
+        return $this->render('ours/artwork.html.twig', [
+            'controller_name' => 'OursController',
+            'artworks' => $artworks
+        ]);
+    }
+
+    /**
+     * @Route("/artwork/{id}", name="show_artwork")
+     */
+    public function show_artwork($id)
+    {
+        $repo = $this->getDoctrine()->getRepository(Artwork::class);
+
+        $artwork = $repo->find($id);
+
+        return $this->render('ours/show_artwork.html.twig', [
+        'artwork' => $artwork
         ]);
     }
 }
