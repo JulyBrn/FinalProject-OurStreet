@@ -22,4 +22,18 @@
 </div>
 </div>
 
+<div class="gallery-container">
+    <div class="inner-width">
+        <h2> Galerie </h2>
+        <div class="gallery">
+       
+                {% for picture in artiste.artworks %}
+                    <a href="{{ path('show_artwork',{'id': picture.id}) }}" class="image">
+                        <img src='{{picture.picture}}' >
+                    </a>
+                {% endfor %}
+        </div>
+    </div>    
+</div>
+
 {% endblock %}

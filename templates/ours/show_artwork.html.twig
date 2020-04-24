@@ -23,12 +23,13 @@
             <p>{{artwork.description}}
             </p>
             <div class="comment-container">
-                <p>Derniers commentaires ici</p>
+                {% for comment in artwork.comments %}
+                    {{comment.author}} (<small>{{ comment.createdAt | date ('d/m/Y à H:i')}}</small>)
+                    {{comment.content | raw}}
+                    </br>
+                {% endfor %}
             </div>
-            <form action="" method="post">
-                <textarea id="message" placeholder="Laisser un commentaire" name="message" rows="5" cols="33" required="" minlength="5"></textarea>
-                <input type="submit" placeholder="Envoyer" name="formbtn" class="formbtn">
-        </form>
+        
 
     </div>
 </div>

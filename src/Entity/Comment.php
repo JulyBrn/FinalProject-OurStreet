@@ -35,7 +35,7 @@ class Comment
      * @ORM\ManyToOne(targetEntity="App\Entity\artwork", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $article;
+    private $artwork;
 
     public function getId(): ?int
     {
@@ -78,14 +78,14 @@ class Comment
         return $this;
     }
 
-    public function getArticle(): ?artwork
+    public function getArtwork(): ?artwork
     {
-        return $this->article;
+        return $this->artwork;
     }
 
-    public function setArticle(?artwork $article): self
+    public function setArtwork(?artwork $artwork): self
     {
-        $this->article = $article;
+        $this->artwork = $artwork;
 
         return $this;
     }
