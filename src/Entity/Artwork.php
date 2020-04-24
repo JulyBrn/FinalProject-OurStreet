@@ -45,7 +45,7 @@ class Artwork
     private $artistes;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="artwork", orphanRemoval=true)
      */
     private $comments;
 
@@ -146,7 +146,7 @@ class Artwork
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
-            $comment->setArticle($this);
+            $comment->setComments($this);
         }
 
         return $this;
@@ -157,8 +157,8 @@ class Artwork
         if ($this->comments->contains($comment)) {
             $this->comments->removeElement($comment);
             // set the owning side to null (unless already changed)
-            if ($comment->getArticle() === $this) {
-                $comment->setArticle(null);
+            if ($comment->getComments() === $this) {
+                $comment->setComments(null);
             }
         }
 
