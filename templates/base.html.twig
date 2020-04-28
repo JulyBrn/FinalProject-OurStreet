@@ -18,7 +18,17 @@
                     <a href="{{path('artwork')}}">Oeuvres</a>
                     <a href="{{path('maps')}}">Carte</a>
                     <a href="#">Agenda</a>
-                    <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Se connecter</a>
+
+                    {% if app.user %}
+
+                        <a href="{{path('logout')}}">Se déconnecter</a>
+
+                    {% else %}
+
+                        <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Se connecter</a>
+                    
+                    {% endif %}
+                    
                 </nav>
         </header>
 
@@ -39,8 +49,9 @@
 
                 <!-- CONNECT FORM -->
                 <form action="{{ path('login') }}" method="post" class="dialog-form">
-                    <input type="email" id="email" placeholder="Email" class="email" required>
-                    <input type="password" id="password" placeholder="Mot de passe" class="password" required>
+                    <input type="email" name="email" id="email" placeholder="Email" class="email" required>
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" class="password" required>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <button type="submit"class="dialog-btn">Se connecter</button>
                 </form>
                 <!-- END CONNECT FORM -->
@@ -65,7 +76,7 @@
                 </div>
 
                 <!-- CONNECT FORM -->
-                <form action="" method="post" class="dialog-form">
+                <form action="{{path('signIn')}}" method="post" class="dialog-form">
                     <input type="text" name="name" id="name" placeholder="Prénom" class="name" required>
                     <input type="text" name="surname" id="surname" placeholder="Nom" class="surname" required>
                     <input type="email" id="email" placeholder="Email" class="email" required>
