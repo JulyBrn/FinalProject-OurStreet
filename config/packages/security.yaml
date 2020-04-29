@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -18,9 +18,6 @@ security:
         main:
             pattern: ^/
             anonymous: lazy
-            form_login:
-                login_path: login
-                check_path: login_check
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator

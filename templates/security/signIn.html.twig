@@ -5,14 +5,14 @@
 {% endblock %}
 {% block body %}
     <h2 id="dialog-title">Inscription</h2>
-    {{form_start(form)}}
-        {{form_row(form.surname, {'label':' ','attr': {'placeholder': 'Prénom', 'class': 'name'}})}}
-        {{form_row(form.name, {'label':' ','attr': {'placeholder': 'Nom', 'class': 'surname'}})}}
-        {{form_errors(form.email)}}
-        {{form_row(form.email, {'label':' ', 'attr': {'placeholder': 'Email', 'class': 'email'}})}}
-        {{form_row(form.password, {'label':' ', 'attr': {'placeholder': 'Mot de passe', 'class': 'password'}})}}
-        {{form_row(form.confirm_password, {'label':' ', 'attr': {'placeholder': 'Confirmer', 'class': 'password'}})}}
-        <button type="submit"class="dialog-btn">S'inscrire</button>
-    {{form_end(form)}}
-    </p>
+    <div class="dialog-form">
+        {{form_start(form)}}
+            {{form_row(form.surname, {'label':' ','attr': {'placeholder': 'Prénom', 'class': 'name'}})}}
+            {{form_row(form.name, {'label':' ','attr': {'placeholder': 'Nom', 'class': 'surname'}})}}
+            {{form_row(form.email, {'label':' ', 'attr': {'placeholder': 'Email', 'class': 'email'}})}}
+            {{form_row(form.password, {'label':' ', 'attr': {'placeholder': 'Mot de passe', 'class': 'password'}})}}
+            {{form_row(form.confirm_password, {'label':' ', 'attr': {'placeholder': 'Confirmer', 'class': 'password'}})}}
+            <button type="submit"class="dialog-btn">S'inscrire</button>
+        {{form_end(form)}}
+    </div>
 {% endblock %}

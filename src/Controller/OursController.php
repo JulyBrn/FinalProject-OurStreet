@@ -4,6 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Artiste;
 use App\Entity\Artwork;
+use App\Entity\Comment;
+use App\Form\CommentType;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -72,14 +76,30 @@ class OursController extends AbstractController
     /**
      * @Route("/artwork/{id}", name="show_artwork")
      */
-    public function show_artwork($id)
+    public function show_artwork($id, Request $request, ObjectManager $manager)
     {
-        $repo = $this->getDoctrine()->getRepository(Artwork::class);
+         $repo = $this->getDoctrine()->getRepository(Artwork::class);
+         $artwork = $repo->find($id);
+         
+         $comment = new Comment();
+         $form = $this->createForm(CommentType::class, $comment);
 
-        $artwork = $repo->find($id);
+         $form->handleRequest($request);
+
+         if($form->isSubmitted() && $form->isValid()){
+
+            $comment->setCreatedAt(new \DateTime())
+                    ->setArtwork($artwork);
+
+            $manager->persist($comment);
+            $manager->flush();
+
+            return $this->redirectToRoute('show_artwork', ['id' => $artwork->getId()]);
+         }
 
         return $this->render('ours/show_artwork.html.twig', [
-        'artwork' => $artwork
+        'artwork' => $artwork,
+        'commentForm' => $form->createView()
         ]);
     }
     

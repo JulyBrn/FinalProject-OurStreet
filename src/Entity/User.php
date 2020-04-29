@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="L'email est déjà utilisé")
  */
 class User implements UserInterface
 {
@@ -37,7 +37,6 @@ class User implements UserInterface
      *      minMessage = "Votre mot de passe doit contenir minimun {{ limit }} caractères",
      *      allowEmptyString = false
      * )
-     * @Assert\EqualTo(propertyPath="confirm_password", message="Vos mots de passes sont différents")
      */
     private $password;
 
