@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Artiste;
 use App\Entity\Artwork;
 use App\Entity\Comment;
@@ -88,6 +89,7 @@ class OursController extends AbstractController
 
          if($form->isSubmitted() && $form->isValid()){
 
+            $comment->setUser($this->getUser());
             $comment->setCreatedAt(new \DateTime())
                     ->setArtwork($artwork);
 

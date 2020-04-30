@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -17,12 +18,12 @@ class Comment
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $author;
-
-    /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      min = 3,
+     *      minMessage = "Votre commentaire doit contenir minimun {{ limit }} caractères",
+     *      allowEmptyString = false
+     * )
      */
     private $content;
 
@@ -32,26 +33,20 @@ class Comment
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\artwork", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artwork", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $artwork;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comment")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
     }
 
     public function getContent(): ?string
@@ -86,6 +81,18 @@ class Comment
     public function setArtwork(?artwork $artwork): self
     {
         $this->artwork = $artwork;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

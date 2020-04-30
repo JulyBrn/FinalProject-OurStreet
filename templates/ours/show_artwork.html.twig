@@ -26,14 +26,13 @@
             <h4>{{artwork.comments | length}} Commentaires:</h3>
             <br>
             {% for comment in artwork.comments %}
-               <strong> {{ comment.author }}</strong> (<small>{{ comment.createdAt | date ('d/m/Y à H:i') }}</small>)
+               <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y à H:i') }}</small>)
                 {{ comment.content | raw }}
                 </br>
             {% endfor %}
 
             {% if app.user %}
             {{form_start(commentForm)}}
-            {{form_row(commentForm.author, {'label':' ', 'attr': {'placeholder': "Votre nom"}})}}
             {{form_row(commentForm.content, {'label':' ', 'attr': {'placeholder': "Ajouter un commentaire"}})}}
             <button type="submit"class="dialog-btn">Envoyer</button>
             {{form_end(commentForm)}} 
