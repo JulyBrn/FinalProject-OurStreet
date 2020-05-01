@@ -63,4 +63,20 @@ class SecurityController extends AbstractController
             'form' => $form->createView()
         ]);        
     }
+
+   /**
+    * @Route("/profil/{id}", name="profil")
+    */
+    public function profilPage($id) {
+
+        $repo = $this->getDoctrine()->getRepository(User::class);
+
+        $user = $repo->find($id);
+
+        return $this->render('security/profil.html.twig',[
+            'user' => $user
+        ]);
+
+   
+    }
 }
