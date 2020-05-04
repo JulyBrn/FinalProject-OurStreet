@@ -123,5 +123,24 @@ class OursController extends AbstractController
             'id' => $id
             ]);
     }
+
+     /**
+     * @Route("/artiste/{id}/removeFollow", name="removeFollow")
+     */
+    public function removeFollow($id, Request $request, ObjectManager $manager){
+        $user = $this->getUser();
+
+        $repo = $this->getDoctrine()->getRepository(Artiste::class);
+        $artiste = $repo->find($id);
+
+        $user->removeFollow($artiste);
+
+        $manager->persist($user);
+        $manager->flush();
+
+        return $this->redirectToRoute('show_artiste',[
+            'id' => $id
+            ]);
+    }
     
 }
