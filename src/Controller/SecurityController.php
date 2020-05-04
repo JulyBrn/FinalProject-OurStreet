@@ -3,11 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -67,14 +68,31 @@ class SecurityController extends AbstractController
    /**
     * @Route("/profil/{id}", name="profil")
     */
-    public function profilPage($id) {
+    public function profilPage($id, Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder) {
 
         $repo = $this->getDoctrine()->getRepository(User::class);
 
         $user = $repo->find($id);
 
+        $form = $this->CreateForm(ProfilType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+
+            $user->setPassword($hash);
+            $manager->persist($user);
+            $manager->flush();
+
+            return $this->redirectToRoute('profil' , ['id' => $user->getId()]);
+        }
+
+
+
         return $this->render('security/profil.html.twig',[
-            'user' => $user
+            'user' => $user,
+            'form' => $form->createView()
         ]);
 
    

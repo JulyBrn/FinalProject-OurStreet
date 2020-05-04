@@ -1,8 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/userProfil.css') }}"/>
 {% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="left">
+        <h1>{{app.user.name}} {{app.user.surname}}</h1>
+        {{form_start(form)}}
+            {{form_row(form.surname, {'label':' ','attr': {'placeholder': 'Prénom', 'class': 'name'}})}}
+            {{form_row(form.name, {'label':' ','attr': {'placeholder': 'Nom', 'class': 'surname'}})}}
+            {{form_row(form.email, {'label':' ', 'attr': {'placeholder': 'Email', 'class': 'email'}})}}
+            {{form_row(form.password, {'label':' ', 'attr': {'placeholder': 'Mot de passe', 'class': 'password'}})}}
+            {{form_row(form.confirm_password, {'label':' ', 'attr': {'placeholder': 'Confirmer', 'class': 'password'}})}}
+            <button type="submit"class="dialog-btn">Modifier</button>
+        {{form_end(form)}}
+    </div>
 
+    <div class="right">
+        <h2> Artistes que vous suivez</h2>
+    </div>
+</div>
 {% endblock %}

@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/gallery.css') }}"/>
 {% endblock %}
 
 {% block body %}
 
-<div class="artistes">
+<div class="container">
     {% for artwork in artworks %}
-        <div class="artist-img">
+        <div class="artwork-img">
             <figure>
                 <a href="{{ path('show_artwork',{'id': artwork.id}) }}">
-                    <img src="{{ artwork.picture }}" style="width : 200px" alt="Elephant at sunset">
+                    <img src="{{ artwork.picture }}"  alt="Elephant at sunset">
                 </a>
             <figcaption>{{ artwork.name }}</figcaption>
         </div>
