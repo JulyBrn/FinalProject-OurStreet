@@ -39,6 +39,11 @@ class Artiste
      */
     private $artworks;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="follow")
+     */
+    private $followers;
+
     public function __construct()
     {
         $this->artworks = new ArrayCollection();
@@ -114,6 +119,18 @@ class Artiste
             $this->artworks->removeElement($artwork);
             $artwork->removeArtiste($this);
         }
+
+        return $this;
+    }
+
+    public function getFollowers(): ?User
+    {
+        return $this->followers;
+    }
+
+    public function setFollowers(?User $followers): self
+    {
+        $this->followers = $followers;
 
         return $this;
     }

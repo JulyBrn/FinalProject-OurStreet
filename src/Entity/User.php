@@ -62,9 +62,15 @@ class User implements UserInterface
      */
     private $comment;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Artiste", mappedBy="followers")
+     */
+    private $follow;
+
     public function __construct()
     {
         $this->comment = new ArrayCollection();
+        $this->follow = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -194,6 +200,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($comment->getUser() === $this) {
                 $comment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Artiste[]
+     */
+    public function getFollow(): Collection
+    {
+        return $this->follow;
+    }
+
+    public function addFollow(Artiste $follow): self
+    {
+        if (!$this->follow->contains($follow)) {
+            $this->follow[] = $follow;
+            $follow->setFollowers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFollow(Artiste $follow): self
+    {
+        if ($this->follow->contains($follow)) {
+            $this->follow->removeElement($follow);
+            // set the owning side to null (unless already changed)
+            if ($follow->getFollowers() === $this) {
+                $follow->setFollowers(null);
             }
         }
 
