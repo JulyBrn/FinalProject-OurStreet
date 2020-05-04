@@ -104,5 +104,24 @@ class OursController extends AbstractController
         'commentForm' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/artiste/{id}/follow", name="follow")
+     */
+    public function follow($id, Request $request, ObjectManager $manager){
+        $user = $this->getUser();
+
+        $repo = $this->getDoctrine()->getRepository(Artiste::class);
+        $artiste = $repo->find($id);
+
+        $user->addFollow($artiste);
+
+        $manager->persist($user);
+        $manager->flush();
+
+        return $this->redirectToRoute('show_artiste',[
+            'id' => $id
+            ]);
+    }
     
 }

@@ -20,6 +20,10 @@
 
     <div class="right">
         <h2> Artistes que vous suivez</h2>
+
+        {% for artiste in user.follow %}
+            -{{artiste.name}}<br>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
