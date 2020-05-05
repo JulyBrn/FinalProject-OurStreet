@@ -1,8 +1,12 @@
-var slideIndex,slides;
+var slideIndex,slides,captionText;
 function initGallery() {
     slideIndex=0;
     slides=document.getElementsByClassName("imageHolder");
     slides[slideIndex].style.opacity=1;
+
+    captionText=document.querySelector(".captionHolder .captionText");
+    captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
+
 }
 initGallery();
 function plusSlides(n) {
@@ -15,14 +19,17 @@ function moveSlide(n) {
         forCurrent: "",
         forNext: ""
     };
+    let slideTextAnimClass; 
     if (n > slideIndex) {
         if (n>=slides.length) {n=0;}
         moveSlideAnimClass.forCurrent = "moveLeftCurrentSlide";
         moveSlideAnimClass.forNext = "moveLeftNextSlide";
+        slideTextAnimClass="slideTextFromTop";
     } else if(n<slideIndex) {
         if(n<0){n=slides.length-1;}
         moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
         moveSlideAnimClass.forNext = "moveRightNextSlide";
+        slideTextAnimClass="slideTextFromBottom";
 
     }
     if(n!=slideIndex) {
@@ -35,6 +42,10 @@ function moveSlide(n) {
         current.classList.add(moveSlideAnimClass.forCurrent);
         next.classList.add(moveSlideAnimClass.forNext);
         slideIndex=n;
+        captionText.style.display="none";
+        captionText.className="captionText "+slideTextAnimClass;
+        captionText.innerText=slides[n].querySelector(".captionText").innerText;
+        captionText.style.display="block";
     }
 }
 
@@ -42,6 +53,6 @@ function moveSlide(n) {
     function setTimer() {
         timer=setInterval(function() {
             plusSlides(1);
-        }, 3000)
+        }, 3500)
     }
     setTimer();

@@ -46,6 +46,7 @@ figure img {
     height: 200px;
     border-radius: 175px;
     border: 1px solid black;
+    object-fit: cover;
 }
 
 figure figcaption {

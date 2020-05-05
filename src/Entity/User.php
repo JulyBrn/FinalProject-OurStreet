@@ -63,7 +63,7 @@ class User implements UserInterface
     private $comment;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Artiste", mappedBy="followers")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Artiste", inversedBy="follower")
      */
     private $follow;
 
@@ -218,7 +218,6 @@ class User implements UserInterface
     {
         if (!$this->follow->contains($follow)) {
             $this->follow[] = $follow;
-            $follow->setFollowers($this);
         }
 
         return $this;
@@ -228,10 +227,6 @@ class User implements UserInterface
     {
         if ($this->follow->contains($follow)) {
             $this->follow->removeElement($follow);
-            // set the owning side to null (unless already changed)
-            if ($follow->getFollowers() === $this) {
-                $follow->setFollowers(null);
-            }
         }
 
         return $this;

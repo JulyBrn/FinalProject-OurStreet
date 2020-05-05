@@ -10,9 +10,10 @@
 <div class="left">
     <img src="{{ artiste.image }}" alt="Elephant at sunset">
     <div class="followArtist">
-        <h4> Nombre de Followers: {{artiste.followers|length}} 
+        <h4> Nombre de Followers: {{artiste.follower|length}} 
          {% if app.user %}
-            {% if artiste.followers != app.user %}
+            
+            {% if artiste.follower != app.user %}
                 <a href="{{path('follow', {"id": artiste.id})}}">Suivre </a></h4>
             {% else %}
                 <a href="{{path('removeFollow', {"id": artiste.id})}}">Ne plus suivre </a></h4>

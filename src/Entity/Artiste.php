@@ -40,13 +40,16 @@ class Artiste
     private $artworks;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="follow")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="follow")
      */
-    private $followers;
+    private $follower;
+
+   
 
     public function __construct()
     {
         $this->artworks = new ArrayCollection();
+        $this->follower = new ArrayCollection();
     }
 
     public function __toString()
@@ -123,14 +126,30 @@ class Artiste
         return $this;
     }
 
-    public function getFollowers(): ?User
+    /**
+     * @return Collection|User[]
+     */
+    public function getFollower(): Collection
     {
-        return $this->followers;
+        return $this->follower;
     }
 
-    public function setFollowers(?User $followers): self
+    public function addFollower(User $follower): self
     {
-        $this->followers = $followers;
+        if (!$this->follower->contains($follower)) {
+            $this->follower[] = $follower;
+            $follower->addFollow($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFollower(User $follower): self
+    {
+        if ($this->follower->contains($follower)) {
+            $this->follower->removeElement($follower);
+            $follower->removeFollow($this);
+        }
 
         return $this;
     }
