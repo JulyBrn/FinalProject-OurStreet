@@ -12,8 +12,12 @@
     <div class="followArtist">
         <h4> Nombre de Followers: {{artiste.followers|length}} 
          {% if app.user %}
-          <a href="{{path('follow', {"id": artiste.id})}}">Suivre </a></h4>
-          {% endif %}
+            {% if artiste.followers != app.user %}
+                <a href="{{path('follow', {"id": artiste.id})}}">Suivre </a></h4>
+            {% else %}
+                <a href="{{path('removeFollow', {"id": artiste.id})}}">Ne plus suivre </a></h4>
+            {% endif %}
+        {% endif %}
     </div>  
 </div>
 
