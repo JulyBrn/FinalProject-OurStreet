@@ -52,6 +52,22 @@ a {
     position: relative;
 }
 
+.galleryContainer .slideShowContainer #playPause{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-image: url("/img/playPause.png");
+    background-repeat: no-repeat;
+    z-index: 5;
+    background-size: cover;
+    margin: 5px;
+    cursor: pointer;
+    opacity: .3;
+}
+.galleryContainer .slideShowContainer #playPause:hover{
+    opacity: .7;
+}
+
 .galleryContainer .slideShowContainer .imageHolder {
     width: 100%;
     height: 100%;
@@ -141,18 +157,22 @@ a {
     bottom: 0;
     z-index: 1;
     color: white;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     width: 100%;
-    height: 100px;
+    height: 150px;
     line-height: 50px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background: rgba(51, 48, 48, .3);
 
 }
 
 .galleryContainer .slideShowContainer>.captionHolder>.captionText
 {
     margin: 0;
+    width: 50%;
 }
 
 .slideTextFromBottom {

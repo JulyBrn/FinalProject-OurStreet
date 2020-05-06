@@ -7,6 +7,7 @@ use App\Entity\Artiste;
 use App\Entity\Artwork;
 use App\Entity\Comment;
 use App\Form\CommentType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -103,6 +104,25 @@ class OursController extends AbstractController
         'artwork' => $artwork,
         'commentForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/artwork/{id}/removeComment", name="removeComment")
+     */
+    public function removeComment($id, Request $request, EntityManagerInterface $manager)
+    {
+        $user = $this->getUser();
+        $repo = $this->getDoctrine()->getRepository(Comment::class);
+        $comment = $repo->find($id);
+
+        $idArtwork = $comment->getArtwork()->getId();
+
+        $manager->remove($comment);
+        $manager->flush();
+
+        return $this->redirectToRoute('show_artwork',[
+            'id' => $idArtwork
+            ]);
     }
 
     /**
