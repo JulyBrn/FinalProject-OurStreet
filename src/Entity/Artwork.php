@@ -49,10 +49,16 @@ class Artwork
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="artworkLike")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,6 +166,34 @@ class Artwork
             if ($comment->getComments() === $this) {
                 $comment->setComments(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addArtworkLike($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeArtworkLike($this);
         }
 
         return $this;

@@ -21,15 +21,24 @@
     </div>
 
     <div class="right">
-        <h3> Artistes que je suis</h3>
-
         <div class="artisteFollow">
-        {% for artiste in user.follow %}
-            <a href="{{ path('show_artiste',{'id': artiste.id}) }}" title="{{artiste.name}}">
-                <img src="{{artiste.image}}">
-            </a>
-            <br>
-        {% endfor %}
+        <h3> Artistes que je suis</h3>
+            {% for artiste in user.follow %}
+                <a href="{{ path('show_artiste',{'id': artiste.id}) }}" title="{{artiste.name}}">
+                    <img src="{{artiste.image}}">
+                </a>
+                <br>
+            {% endfor %}
+        </div>
+
+        <div class="artworkliked">
+        <h3> Les dernière oeuvres aimées </h3>
+                {% for artwork in user.artworkLike %}
+                    <a href="{{ path('show_artwork',{'id': artwork.id}) }}">
+                        <img src="{{artwork.picture}}">
+                    </a>
+                    <br>
+            </div>
         </div>
     </div>
 </div>

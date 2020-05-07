@@ -162,5 +162,44 @@ class OursController extends AbstractController
             'id' => $id
             ]);
     }
-    
+
+
+    /**
+     * @Route("/artwork/{id}/like", name="like")
+     */
+    public function like($id, Request $request, EntityManagerInterface $manager){
+
+        $user = $this->getUser();
+
+        $repo = $this->getDoctrine()->getRepository(Artwork::class);
+        $artwork = $repo->find($id);
+
+        $user->addArtworkLike($artwork);
+
+        $manager->persist($user);
+        $manager->flush();
+
+        return $this->redirectToRoute('show_artwork', [
+            'id' => $id
+        ]);
+    }
+
+     /**
+     * @Route("/artwork/{id}/unlike", name="unlike")
+     */
+    public function removelike($id, ObjectManager $manager){
+        $user = $this->getUser();
+
+        $repo = $this->getDoctrine()->getRepository(Artwork::class);
+        $artwork = $repo->find($id);
+
+        $user->removeArtworkLike($artwork);
+
+        $manager->persist($user);
+        $manager->flush();
+
+        return $this->redirectToRoute('show_artwork',[
+            'id' => $id
+            ]);
+    }
 }

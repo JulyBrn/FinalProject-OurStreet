@@ -67,10 +67,16 @@ class User implements UserInterface
      */
     private $follow;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Artwork", inversedBy="users")
+     */
+    private $artworkLike;
+
     public function __construct()
     {
         $this->comment = new ArrayCollection();
         $this->follow = new ArrayCollection();
+        $this->artworkLike = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,6 +233,32 @@ class User implements UserInterface
     {
         if ($this->follow->contains($follow)) {
             $this->follow->removeElement($follow);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|artwork[]
+     */
+    public function getArtworkLike(): Collection
+    {
+        return $this->artworkLike;
+    }
+
+    public function addArtworkLike(artwork $artworkLike): self
+    {
+        if (!$this->artworkLike->contains($artworkLike)) {
+            $this->artworkLike[] = $artworkLike;
+        }
+
+        return $this;
+    }
+
+    public function removeArtworkLike(artwork $artworkLike): self
+    {
+        if ($this->artworkLike->contains($artworkLike)) {
+            $this->artworkLike->removeElement($artworkLike);
         }
 
         return $this;

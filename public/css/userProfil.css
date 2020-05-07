@@ -52,6 +52,7 @@ a {
 .right
 {
     width: 45%;
+    
 }
 
 img 
@@ -80,3 +81,4 @@ h3
     display: flex;
     flex-wrap: wrap;
 }
+
