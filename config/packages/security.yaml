@@ -21,6 +21,9 @@ security:
         main:
             pattern: ^/
             anonymous: lazy
+
+            form_login:
+                use_referer: true
             
             guard:
                 authenticators:
@@ -28,6 +31,7 @@ security:
             logout:
                 path: logout
                 target: /
+
 
             # activate different ways to authenticate
 

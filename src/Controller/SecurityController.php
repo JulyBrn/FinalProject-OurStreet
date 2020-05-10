@@ -57,6 +57,7 @@ class SecurityController extends AbstractController
         }
 
         if($request->getContent() !== NULL ){
+
             $hash = $encoder->encodePassword($user, $request->request->get('password'));
             $user->setName($request->request->get('name'))
                  ->setSurname($request->request->get('surname'))
