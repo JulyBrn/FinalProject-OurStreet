@@ -19,6 +19,10 @@
                     {# <a href="{{path('maps')}}">Carte</a> #}
                     <a href="#">Agenda</a>
 
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="/adminOursStreetBackEnd">Admin</a>
+                    {% endif %}
+
                     {% if app.user %}
                         <a href="{{path('profil', {"id": app.user.id})}}">Profil </a>
                         
