@@ -34,12 +34,22 @@ a {
 
 /* Artwork Containe */
 
+.img-background {
+    width: 100%;
+    height: 700px;
+    position: static;
+    filter: brightness(0.3);
+    background-size: cover;
+    background-position: center;
+}
+
 .artwork-container {
     width:100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-top: 50px;
+    justify-content: space-around;
+    position: absolute;
+    top: 100px;
 }
 
 .artwork-picture {
@@ -49,16 +59,19 @@ a {
     align-items: center;
 }
 
-.about-artwork {
+.artName {
     width: 45%;
+}
+.about-artwork {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    padding-top: 30px;
 }
 
 .about-artwork h1 {
     padding-top: 10px;
-    color: #333;
+    color: white;
+    font-size: 40px;
 }
 
 .about-artwork p {
@@ -68,8 +81,12 @@ a {
 }
 
 .artwork-picture img {
-    width: 400px;
+    width: 450px;
     transition: 0.4s;
+}
+
+.artistName, .artistName a {
+    color: white;
 }
 
 .under-img {
@@ -85,10 +102,12 @@ a {
 }
 
 .underName {
-    width: 80px;
+    width: 10%;
     height: 2px;
     background-color:blue;
 }
+
+
 
 /*End Artwork container */
 
