@@ -12,7 +12,7 @@
         <img src="{{ artwork.picture }}" alt="">
         <div class="under-img">
            
-            <p>{{ artwork.localisation }}</p>
+            <p class="about-content">{{ artwork.description }}</p>
         </div>
     </div>
     
@@ -60,7 +60,6 @@
     </div>   
 </div>
 <div class="comment-container">
-    <p class="about-content">{{ artwork.description }}</p>
     <div class="comment-content">
         <h4>{{artwork.comments | length}} Commentaires:</h3>
         {% for comment in artwork.comments %}

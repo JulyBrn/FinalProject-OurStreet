@@ -49,7 +49,7 @@ a {
     flex-direction: row;
     justify-content: space-around;
     position: absolute;
-    top: 100px;
+    top: 150px;
 }
 
 .artwork-picture {
@@ -148,8 +148,8 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-left: 1px solid blue;
-    border-right: 1px solid blue;
+    border-left: 1px dashed blue;
+    border-right: 1px dashed blue;
 }
 
 .pushComment {
@@ -159,14 +159,24 @@ textarea {
     padding-bottom: 20px;
 }
 
+.pushComment a {
+    color: white;
+    background: blue;
+    border-radius: 3px;
+    text-align: center;
+    padding: 5px;
+}
+
 #comment_content {
     width: 100%;
 }
 
 .about-content {
-    width: 50%;
+    width: 100%;
     text-align: center;
-    padding: 50px;
+    color: white;
+    font-size: 20px;
+
 }
 
 .like-container {
