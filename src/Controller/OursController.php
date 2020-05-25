@@ -41,9 +41,14 @@ class OursController extends AbstractController
     /**
      * @Route("/maps", name="maps")
      */
-    public function map()
+    public function map(Request $request, ObjectManager $manager)
     {
-        return $this->render('ours/maps.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Artwork::class);
+        $artwork = $repo->findAll();
+        
+        return $this->render('ours/maps.html.twig', [
+            'artwork' => $artwork
+        ]);
     }
 
     /**

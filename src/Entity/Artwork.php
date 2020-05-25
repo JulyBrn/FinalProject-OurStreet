@@ -35,11 +35,6 @@ class Artwork
     private $picture;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $localisation;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Artiste", inversedBy="artworks")
      */
     private $artistes;
@@ -53,6 +48,16 @@ class Artwork
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="artworkLike")
      */
     private $users;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     */
+    private $lat;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     */
+    private $lon;
 
     public function __construct()
     {
@@ -98,18 +103,6 @@ class Artwork
     public function setPicture(string $picture): self
     {
         $this->picture = $picture;
-
-        return $this;
-    }
-
-    public function getLocalisation(): ?string
-    {
-        return $this->localisation;
-    }
-
-    public function setLocalisation(?string $localisation): self
-    {
-        $this->localisation = $localisation;
 
         return $this;
     }
@@ -203,5 +196,29 @@ class Artwork
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getLat(): ?string
+    {
+        return $this->lat;
+    }
+
+    public function setLat(?string $lat): self
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    public function getLon(): ?string
+    {
+        return $this->lon;
+    }
+
+    public function setLon(?string $lon): self
+    {
+        $this->lon = $lon;
+
+        return $this;
     }
 }

@@ -13,12 +13,11 @@
 
 {% block body%}
     <div id="mymap"></div>
-
-
-
+    
 {% endblock %}
 
 {% block javascripts %}
+
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="crossorigin=""></script>
     <script> var map = L.map('mymap').setView([48.8534, 2.3488], 13);
@@ -27,7 +26,22 @@
     minZoom: 1,
     maxZoom: 20
     }).addTo(map);
-    var marker = L.marker([48.8534, 2.3488]).addTo(map);
-        marker.bindPopup("<p>Paris</p>")
+    {% for map in artwork.lat %}
+        {% if (artwork.lon[loop.index0] is defined ) %}
+    var marker = L.marker(["{{artwork.lon[loop.index0]}}"],["{{map}}"]).addTo(map);
+    
+        marker.bindPopup('<p> '+ "{{artwork.name}}" + '</p>');
+        {% endif %}
+    {% endfor %}
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("Tu as cliqué sur la map à  " + e.latlng.toString())
+        .openOn(map);
+    }
+    map.on('click', onMapClick);
      </script>
 {% endblock %}
