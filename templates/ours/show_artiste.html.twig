@@ -6,38 +6,43 @@
 
 
 {% block body %}
-<div class="artist-container">
-<div class="left">
-    <img src="{{ artiste.image }}" alt="Elephant at sunset">
-    <div class="followArtist">
-        <h4> Nombre de Followers: {{artiste.follower|length}} 
-         {% if app.user %}
-            {% if app.user not in artiste.follower %}
-                <a href="{{path('follow', {"id": artiste.id})}}">Suivre </a></h4>
-            {% else %}
-                <a href="{{path('removeFollow', {"id": artiste.id})}}">Ne plus suivre </a></h4>
+<div class="background-container" style ="background-image: url('{{ asset('img/Photo-by-Patrick-Tomasso-on-Unsplash.jpg') }}')"></div>
+ <div class="content">
+    <div class="artist-container">
+    <div class="left">
+        <img src="{{ artiste.image }}" alt="Elephant at sunset">
+        <div class="followArtist">
+            <h4> Nombre de Followers: {{artiste.follower|length}} 
+            {% if app.user %}
+                {% if app.user not in artiste.follower %}
+                    <a href="{{path('follow', {"id": artiste.id})}}">Suivre </a></h4>
+                {% else %}
+                    <a href="{{path('removeFollow', {"id": artiste.id})}}">Ne plus suivre </a></h4>
+                {% endif %}
             {% endif %}
-        {% endif %}
-    </div>  
-</div>
+        </div>  
+    </div>
 
-<div class="right">
-    <h1>{{ artiste.name }}</h1>
-    <div class="underName"></div>
-    {{ artiste.content | raw }}
-</div>
-</div>
+    <div class="right">
+        <h1>{{ artiste.name }}</h1>
+        <div class="underName"></div>
+        <p>{{ artiste.content | raw }}</p>
+    </div>
+    </div>
 
-
-<h2 class="gallery">Galerie</h2>
-<div class="container">
-    {% for picture in artiste.artworks %}
-        <div class="artwork-img">
-            <a href="{{ path('show_artwork',{'id': picture.id}) }}">
-                <img src='{{picture.picture}}' >
-            </a>
+    <div class="gallery-container">
+        <h2 class="gallery">Galerie</h2>
+        <div class="container">
+            {% for picture in artiste.artworks %}
+                <div class="artwork-img">
+                    <a href="{{ path('show_artwork',{'id': picture.id}) }}">
+                        <img src='{{picture.picture}}' >
+                    </a>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 </div>
+
 
 {% endblock %}

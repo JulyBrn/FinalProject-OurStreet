@@ -34,6 +34,20 @@ a {
 
 /* ARTIST SECTION */
 
+.content{
+    position: absolute;
+    top: 100px;
+}
+
+.background-container{
+    width: 100%;
+    height: 1100px;
+    background-size: cover;
+    background-position: center;
+    position: static;
+    filter: brightness(0.6);
+}
+
 .artist-container {
     display: flex;
     width: 100%;
@@ -47,6 +61,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .followArtist {
@@ -79,13 +94,20 @@ a {
 }
 
 .right p {
-    padding-top: 40px;
-    width: 80%;
+    width: 90%;
+    color: white;
+    font-size: 20px;
+    text-align: justify;
 }
 
 .right h1 {
     font-size: 55px;
-    color: #333;
+    color: white;
+}
+
+.followArtist h4 {
+    color: white;
+    font-size: 18px;
 }
 
 /* END ARTIST SECTION */
@@ -97,18 +119,18 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 .artwork-img {
     margin: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     width: 200px;
     height: 200px;
 }
 
 .artwork-img:hover {
-    border: 1px solid blue;
+    border: 1px solid white;
 }
 
 a img {
@@ -118,8 +140,9 @@ a img {
 
 .gallery {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 90px;
     font-size: 50px;
+    color: white;
 }
 
 
