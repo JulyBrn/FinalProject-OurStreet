@@ -36,11 +36,16 @@ a {
 
 .img-background {
     width: 100%;
-    height: 700px;
+    height: 1000px;
     position: static;
-    filter: brightness(0.3);
+    filter: brightness(0.4);
     background-size: cover;
     background-position: center;
+}
+
+.bloc-container {
+    position: absolute;
+    top: 150px;
 }
 
 .artwork-container {
@@ -48,8 +53,6 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    position: absolute;
-    top: 150px;
 }
 
 .artwork-picture {
@@ -89,13 +92,6 @@ a {
     color: white;
 }
 
-.under-img {
-    padding-top: 40px;
-    width: 50%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-}
 
 .artwork-picture img:hover {
     transform: scale(1.5);
@@ -142,18 +138,16 @@ textarea {
 }
 
 .comment-container {
-    width: 80%;
+    width: 100%;
     height: auto;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-left: 1px dashed blue;
-    border-right: 1px dashed blue;
+    color: white;
+    margin-top: 70px;
 }
 
 .pushComment {
-    width: 50%;
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
@@ -172,10 +166,11 @@ textarea {
 }
 
 .about-content {
-    width: 100%;
-    text-align: center;
+    width: 90%;
+    text-align: justify;
     color: white;
     font-size: 20px;
+    padding-top: 20px;
 
 }
 
@@ -183,7 +178,7 @@ textarea {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .like-count {
@@ -198,6 +193,5 @@ textarea {
 }
 
 .comment-content {
-    width: 50%;
     padding-bottom: 20px;
 }

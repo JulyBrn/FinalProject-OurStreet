@@ -6,84 +6,83 @@
 
 {% block body %}
 <div class="img-background" style ="background-image: url('{{ artwork.picture }}')"></div>
-
-<div class="artwork-container">
-    <div class="artwork-picture">
-        <img src="{{ artwork.picture }}" alt="">
-        <div class="under-img">
-           
-            <p class="about-content">{{ artwork.description }}</p>
+<div class="bloc-container">
+    <div class="artwork-container">
+        <div class="artwork-picture">
+            <img src="{{ artwork.picture }}" alt="">
+            <div class="comment-container">
+        <div class="comment-content">
+            <h3>{{artwork.comments | length}} Commentaires:</h3>
+            {% for comment in artwork.comments %}
+            <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y à H:i') }}</small>)
+                {{ comment.content | raw }}
+                {% if app.user == comment.user  %}
+                    <a href="{{path('removeComment', {"id": comment.id})}}">
+                        <svg class="deleteComment "aria-hidden="true" focusable="false" data-prefix="far" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z"></path></svg>
+                    </a>
+                {% endif %}
+                </br>
+            {% endfor %}
         </div>
-    </div>
-    
-     <div class="artName">
-        <div class="about-artwork">
-            <h2 class="artistName" > 
-                {% for artiste in artwork.artistes %}
-                    <a href="{{ path('show_artiste',{'id': artiste.id}) }}">{{ artiste.name }}</a>
-                {% endfor %}
-            </h2>
-            <div class="underName"></div>
-            <h1>{{ artwork.name }}</h1>
-        </div>
-
-        <div class="like-container">
+        <div class="pushComment">
             {% if app.user %}
-                {% if artwork.users|length > 0 %}
-                    <h5 class="like-count"> + {{artwork.users|length}} </h5>
-                {% else %}
-                    <h5 class="like-count"> {{artwork.users|length}} </h5>
-                {% endif %}
+                {{form_start(commentForm)}}
+                {{form_row(commentForm.content, {'label':' ', 'attr': {'placeholder': "Ajouter un commentaire"}})}}
+                <button type="submit" class="dialog-btn">Envoyer</button>
+                {{form_end(commentForm)}} 
 
-                {% if app.user not in artwork.users %}
-                    <a href="{{path('like', {"id": artwork.id})}}">
-                        <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-                    </a>
-                {% else %}
-                
-                    <a href="{{path('unlike', {'id': artwork.id})}}">
-                        <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="red" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-                    </a>
-                {% endif %}
             {% else %}
-                {% if artwork.users|length > 0 %}
-                    <h5 class="like-count"> + {{artwork.users|length}} </h5>
-                {% else %}
-                    <h5 class="like-count"> {{artwork.users|length}} </h5>
-                {% endif %}
-                <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">
-                        <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-                </a>
-                
+            <br>
+            <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Connectez-vous pour laisser un commentaire</a>
             {% endif %}
         </div>
-    </div>   
-</div>
-<div class="comment-container">
-    <div class="comment-content">
-        <h4>{{artwork.comments | length}} Commentaires:</h3>
-        {% for comment in artwork.comments %}
-        <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y à H:i') }}</small>)
-            {{ comment.content | raw }}
-            {% if app.user == comment.user  %}
-                <a href="{{path('removeComment', {"id": comment.id})}}">
-                    <svg class="deleteComment "aria-hidden="true" focusable="false" data-prefix="far" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z"></path></svg>
-                </a>
-            {% endif %}
-            </br>
-        {% endfor %}
     </div>
-    <div class="pushComment">
-        {% if app.user %}
-            {{form_start(commentForm)}}
-            {{form_row(commentForm.content, {'label':' ', 'attr': {'placeholder': "Ajouter un commentaire"}})}}
-            <button type="submit" class="dialog-btn">Envoyer</button>
-            {{form_end(commentForm)}} 
+        </div>
+        
+        <div class="artName">
+            <div class="about-artwork">
+                <h2 class="artistName" > 
+                    {% for artiste in artwork.artistes %}
+                        <a href="{{ path('show_artiste',{'id': artiste.id}) }}">{{ artiste.name }}</a>
+                    {% endfor %}
+                </h2>
+                <div class="underName"></div>
+                <h1>{{ artwork.name }}</h1>
+            </div>
 
-        {% else %}
-        <br>
-        <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Connectez-vous pour laisser un commentaire</a>
-        {% endif %}
+            <p class="about-content">{{ artwork.description }}</p> 
+
+            <div class="like-container">
+                {% if app.user %}
+                    {% if artwork.users|length > 0 %}
+                        <h5 class="like-count"> + {{artwork.users|length}} </h5>
+                    {% else %}
+                        <h5 class="like-count"> {{artwork.users|length}} </h5>
+                    {% endif %}
+
+                    {% if app.user not in artwork.users %}
+                        <a href="{{path('like', {"id": artwork.id})}}">
+                            <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                        </a>
+                    {% else %}
+                    
+                        <a href="{{path('unlike', {'id': artwork.id})}}">
+                            <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="red" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                        </a>
+                    {% endif %}
+                {% else %}
+                    {% if artwork.users|length > 0 %}
+                        <h5 class="like-count"> + {{artwork.users|length}} </h5>
+                    {% else %}
+                        <h5 class="like-count"> {{artwork.users|length}} </h5>
+                    {% endif %}
+                    <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">
+                            <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                    </a>
+                    
+                {% endif %}
+            </div>
+        </div> 
     </div>
 </div>
 {% endblock %}
