@@ -12,9 +12,10 @@
             <img src="{{ artwork.picture }}" alt="">
             {# Commentaires  #}
             <div class="comment-container">
-                <div class="comment-content">
-                    <h3>{{artwork.comments | length}} Commentaires:</h3>
+                
+                    <h4>{{artwork.comments | length}} Commentaires:</h4>
                     {% for comment in artwork.comments %}
+                    <div class="comment-content">
                     <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y à H:i') }}</small>)
                         {{ comment.content | raw }}
                         {% if app.user == comment.user  %}
@@ -23,20 +24,22 @@
                             </a>
                         {% endif %}
                         </br>
+                    </div>
                     {% endfor %}
-                    <button class="dialog-btn" id="btn-comment">Commenter</button>
-                </div>
+                    
+                
+                {% if app.user %}
+                <button class="dialog-btn" id="btn-comment">Commenter</button>
                 <div class="pushComment">
-                    {% if app.user %}
                         {{form_start(commentForm)}}
                         {{form_row(commentForm.content, {'label':' ', 'attr': {'placeholder': "Ajouter un commentaire"}})}}
                         <button type="submit" class="dialog-btn">Envoyer</button>
                         {{form_end(commentForm)}} 
-
-                    {% else %}
-                    <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Connectez-vous pour laisser un commentaire</a>
-                    {% endif %}
                 </div>
+                {% else %}
+                <button class="dialog-btn" id="btn-comment" aria-haspopup="dialog" aria-controls="dialog">Commenter</button>   
+                {% endif %}
+                
             </div>
             {# Fin commentaires #}
         </div>
