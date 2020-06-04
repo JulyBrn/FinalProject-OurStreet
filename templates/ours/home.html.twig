@@ -3,6 +3,7 @@
  <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
 {% endblock %}
 {% block body %}
+    {# Carousselle  #}
     <div class="galleryContainer">
         <div class="slideShowContainer">
             <svg onclick="plusSlides(-1)" id="prevBtn" width="30px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -41,6 +42,27 @@
             </div>
         </div>
     </div>
+    {# end Carousselle #}
+    {# Event #}
+    <div class="eventContainer">
+        <h2 class="eventTitle">L’actualité du street art à Paris</h2>
+
+        <div class="allEvent">
+            <div class="eventContent">
+                <div class="backgroundEvent" style=" background-image: url('{{ asset('img/Du-Mur-Au-Mic-Visuel.jpg') }}')"></div>
+                <div class="TextEvent">
+                    <h1>Du Mur Au Mic</h1>
+                    <p>Donne la parole aux artistes qui font de nos rues une galerie d'art à ciel ouvert</p>
+                </div>
+            </div>
+            <div class="eventContent">
+            </div>
+            <div class="eventContent">
+            </div>
+        </div>
+    </div>
+   
+    {# end Event #}
 {% endblock %}
 
  {% block javascripts %}

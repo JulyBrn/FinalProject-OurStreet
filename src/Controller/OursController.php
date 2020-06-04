@@ -43,6 +43,11 @@ class OursController extends AbstractController
      */
     public function map()
     {
+        if($request->request->get('longitude')){
+            //make something curious, get some unbelieveable data
+            $arrData = ['output' => 'here the result which will appear in div'];
+            return new JsonResponse($arrData);
+        }
            return $this->render('ours/maps.html.twig');
     }
 

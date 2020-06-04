@@ -243,6 +243,7 @@ textarea::placeholder{
 .deleteComment {
     width: 15px;
     margin-left: 5px;
+    color: red;
 }
 
 .comment-content {
