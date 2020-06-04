@@ -9,6 +9,7 @@ easy_admin:
                 - {entity: 'Artiste'}
                 - {entity: 'Comment'}
                 - {entity: 'User'}
+                - {entity: 'Agenda'}
     entities:
       Artiste:
           class: App\Entity\Artiste
@@ -18,3 +19,5 @@ easy_admin:
           class: App\Entity\User
       Comment:
           class: App\Entity\Comment
+      Agenda:
+          class: App\Entity\Agenda

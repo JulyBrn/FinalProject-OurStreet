@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Agenda;
 use App\Entity\Artiste;
 use App\Entity\Artwork;
 use App\Entity\Comment;
@@ -33,9 +34,15 @@ class OursController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home()
+    public function home(Request $request, EntityManagerInterface $manager)
     {
-        return $this->render('ours/home.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Agenda::class);
+
+        $agenda = $repo->findAll();
+
+        return $this->render('ours/home.html.twig', [
+        'agenda' => $agenda
+        ]);
     }
 
     /**
