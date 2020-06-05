@@ -48,17 +48,17 @@
         <h2 class="eventTitle">L’actualité du street art à Paris</h2>
 
         <div class="allEvent">
+         {% for agenda in agenda %}
             <div class="eventContent">
-                <div class="backgroundEvent" style=" background-image: url('{{ asset('img/Du-Mur-Au-Mic-Visuel.jpg') }}')"></div>
+               <a href="{{ agenda.link }}" target="_blank">
+                    <div class="backgroundEvent" style=" background-image: url('{{ agenda.picture }}')"></div>
+                </a>
                 <div class="TextEvent">
-                    <h1>Du Mur Au Mic</h1>
-                    <p>Donne la parole aux artistes qui font de nos rues une galerie d'art à ciel ouvert</p>
+                    <h2>{{ agenda.title }}</h2>
+                    <p>{{ agenda.text }}</p>
                 </div>
             </div>
-            <div class="eventContent">
-            </div>
-            <div class="eventContent">
-            </div>
+        {% endfor %}
         </div>
     </div>
    
