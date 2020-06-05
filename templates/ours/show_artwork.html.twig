@@ -29,15 +29,15 @@
                     
                 
                 {% if app.user %}
-                <button class="dialog-btn" id="btn-comment">Commenter</button>
+                <button class="btn-comment" id="btn-comment">Commenter</button>
                 <div class="pushComment">
                         {{form_start(commentForm)}}
                         {{form_row(commentForm.content, {'label':' ', 'attr': {'placeholder': "Ajouter un commentaire"}})}}
-                        <button type="submit" class="dialog-btn">Envoyer</button>
+                        <button type="submit" class="btn-comment">Envoyer</button>
                         {{form_end(commentForm)}} 
                 </div>
                 {% else %}
-                <button class="dialog-btn" id="btn-comment" aria-haspopup="dialog" aria-controls="dialog">Commenter</button>   
+                <button class="btn-comment" id="btn-comment" aria-haspopup="dialog" aria-controls="dialog">Commenter</button>   
                 {% endif %}
                 
             </div>

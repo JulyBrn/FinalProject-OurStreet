@@ -254,3 +254,17 @@ textarea::placeholder{
 .comment-container h4 {
     width: 100%;
 }
+
+.btn-comment
+{
+    width: 60%;
+    height: 35px;
+    border-radius: 3px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    background: transparent;
+    opacity: 0.8;
+    border: 1px solid white;
+    padding: 0 10px;
+}
