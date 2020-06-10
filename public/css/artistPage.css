@@ -145,6 +145,14 @@ a img {
     color: white;
 }
 
+.follow {
+    background-color: white;
+    border-radius: 3px;
+    color: blue;
+    padding: 5px 10px;
+    font-weight: 600;
+}
+
 
 
 

@@ -53,17 +53,6 @@ function moveSlide(n) {
     function setTimer() {
         timer=setInterval(function() {
             plusSlides(1);
-        }, 3500)
+        }, 4000)
     }
     setTimer();
-    function playPauseSlides() {
-        var playPauseBtn=document.getElementById("playPause");
-        if(timer==null){
-            setTimer();
-            playPauseBtn.style.backgroundPositionY="0px"
-        }else{
-            clearInterval(timer);
-            timer=null;
-            playPauseBtn.style.backgroundPositionY="-33px"
-        }
-    }
