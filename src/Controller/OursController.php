@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Agenda;
+use App\Entity\Slider;
 use App\Entity\Artiste;
 use App\Entity\Artwork;
 use App\Entity\Comment;
@@ -38,24 +39,31 @@ class OursController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(Agenda::class);
 
+        $repos = $this->getDoctrine()->getRepository(Slider::class);
+
+
         $agenda = $repo->findAll();
 
+        $slider = $repos->findAll();
+
         return $this->render('ours/home.html.twig', [
-        'agenda' => $agenda
+        'agenda' => $agenda,
+        'slider' => $slider
         ]);
     }
 
     /**
      * @Route("/maps", name="maps")
      */
-    public function map()
+    public function map(Request $request, EntityManagerInterface $manager)
     {
-        if($request->request->get('longitude')){
-            //make something curious, get some unbelieveable data
-            $arrData = ['output' => 'here the result which will appear in div'];
-            return new JsonResponse($arrData);
-        }
-           return $this->render('ours/maps.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Artwork::class);
+
+        $point = $repo->findAll();
+
+        return $this->render('ours/maps.html.twig', [
+            'point' => $point
+        ]);
     }
 
     /**

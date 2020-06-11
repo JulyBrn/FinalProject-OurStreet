@@ -53,7 +53,7 @@ function moveSlide(n) {
     function setTimer() {
         timer=setInterval(function() {
             plusSlides(1);
-        }, 3500)
+        }, 4500)
     }
     setTimer();
     function playPauseSlides() {

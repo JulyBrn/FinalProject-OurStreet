@@ -17,29 +17,13 @@
             </svg>
             <div id="playPause" onclick="playPauseSlides()"></div>
             <div class="captionHolder"><p class="captionText slideTextFromTop"></p></div>
-            <div class="imageHolder">
-                <img src="{{ asset('img/cover1.jpg') }}"/>
-                <p class="captionText">Welcome on my final project !!! blablalblalblablablablablablalbal</p>
-            </div>
-                <div class="imageHolder">
-                    <a href="{{ absolute_url(path('show_artwork', {'id': 9 })) }}">
-                        <img src="https://www.leparisien.fr/resizer/q7NKWnda1Z_1Z8XGwYcqHl9hboc=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/D5IW7L4JW5OZ7ZWJUK3BKA3ALE.jpg"/>
-                    </a>
-                    <p class="captionText">Coronavirus : l'artiste urbain C215 met en vente des tirages de sa dernière œuvre au profit de la Fondation Hôpitaux de France</p>
-                </div>
-            
-            <div class="imageHolder">
-                <img src="{{ asset('img/grems3.jpg') }}"/>
-                <p class="captionText">Image 3</p>
-            </div>
-            <div class="imageHolder">
-                <img src="{{ asset('img/grems4.jpg') }}"/>
-                <p class="captionText">Image 4</p>
-            </div>
-            <div class="imageHolder">
-                <img src="{{ asset('img/grems5.jpg') }}">
-                <p class="captionText">Image 5</p>
-            </div>
+             {% for slider in slider %}
+                <a href="{{ slider.link }}"><div class="imageHolder">
+                    <img src="{{ slider.image }}"/>
+                    <p class="captionText">{{ slider.text }}</p>
+                </div></a>
+            {% endfor %}
+
         </div>
     </div>
     {# end Carousselle #}

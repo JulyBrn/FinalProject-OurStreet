@@ -30,7 +30,7 @@ class Artiste
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=500)
      */
     private $image;
 
