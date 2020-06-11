@@ -2,7 +2,7 @@
 
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 
     <style> 
     #mymap{
@@ -16,46 +16,30 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script> 
+        var map = L.map('mymap').setView([48.8534, 2.3488], 13);
+        L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        attribution: 'donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        minZoom: 1,
+        maxZoom: 20
+        }).addTo(map);
+        {# Marker #}
+        {% for pt in point %}
 
- 
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="crossorigin=""></script>
-    <script> var map = L.map('mymap').setView([48.8534, 2.3488], 13);
-    L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-    attribution: 'donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-    minZoom: 1,
-    maxZoom: 20
-    }).addTo(map);
-    var popup = L.popup();
+            var latlng = L.latLng({{ pt.lat }}, {{ pt.lon }});
+            var marker = L.marker( latlng ).addTo(map);
+        {% endfor %}
+        {# End Marker #}
 
-    function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("Tu as cliqué sur la map à  " + e.latlng.toString())
-        .openOn(map);
-    }
-    map.on('click', onMapClick);
+        var popup = L.popup();
 
-    $(document).on('click', 'button.ajax', function(){
-            that = $(this);
-            $.ajax({
-                url:'{{ (path('app_bundle_route')) }}',
-                type: "POST",
-                dataType: "json",
-                data: {
-                    "longitude": "some_var_value",
-                    "latitude": "some_var_value",
-                    "adresse": "some_var_value",
-                    
-                },
-                async: true,
-                success: function (data)
-                {
-                    console.log(data)
-                }
-            });
-            return false;
-        });
-        });
+        function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("Tu as cliqué sur la map à  " + e.latlng.toString())
+            .openOn(map);
+        }
+        map.on('click', onMapClick);
      </script>
 {% endblock %}

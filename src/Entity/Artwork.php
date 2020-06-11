@@ -50,12 +50,12 @@ class Artwork
     private $users;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
      */
     private $lat;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
      */
     private $lon;
 
