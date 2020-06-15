@@ -3,43 +3,52 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-
-    <style> 
-    #mymap{
-        height: 700px;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/map.css') }}"/>
+    <link rel="stylesheet"  href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"  />
 {% endblock %}
 
-{% block body%}
+{% block body %}
     <div id="mymap"></div>
 {% endblock %}
 
 {% block javascripts %}
+    <script src="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.umd.js"></script>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <script> 
-        var map = L.map('mymap').setView([48.8534, 2.3488], 13);
+
+        var map = L.map('mymap').setView([48.866667, 2.333333], 12);
+
         L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         attribution: 'donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        subdomains: ['a','b','c'],
         minZoom: 1,
         maxZoom: 20
         }).addTo(map);
-        {# Marker #}
-        {% for pt in point %}
+    {% for pt in point %}
+    
+        var query_addr = "{{pt.adress}}";
+        // Get the provider, in this case the OpenStreetMap (OSM) provider.
+        var provider = new window.GeoSearch.OpenStreetMapProvider()
+        // Query for the address
+        var query_promise = provider.search({ query: query_addr});
+        // Wait until we have an answer on the Promise
+        query_promise.then( value => {
+            for(i=0;i < value.length; i++){
+            // Success!
+                var x_coor = value[i].x;
+                var y_coor = value[i].y;
+                var label = value[i].label;
+                // Create a marker for the found coordinates
+                var marker = L.marker([y_coor,x_coor]).addTo(map) // CAREFULL!!! The first position corresponds to the lat (y) and the second to the lon (x)
+                // Add a popup to said marker with the address found by geosearch (not the one from the user)
+                marker.bindPopup("<b>Found location</b><br>"+label).openPopup();
+            };
+        }, reason => {
+            console.log(reason); // Error!
+            } );
 
-            var latlng = L.latLng({{ pt.lat }}, {{ pt.lon }});
-            var marker = L.marker( latlng ).addTo(map);
-        {% endfor %}
-        {# End Marker #}
+    {% endfor %}
 
-        var popup = L.popup();
-
-        function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent("Tu as cliqué sur la map à  " + e.latlng.toString())
-            .openOn(map);
-        }
-        map.on('click', onMapClick);
-     </script>
+            
+    </script>
 {% endblock %}
