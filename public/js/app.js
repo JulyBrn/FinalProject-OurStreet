@@ -7,6 +7,8 @@ function initGallery() {
     captionText=document.querySelector(".captionHolder .captionText");
     captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
 
+    
+
 }
 initGallery();
 function plusSlides(n) {
