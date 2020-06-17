@@ -156,17 +156,18 @@ a {
 .galleryContainer .slideShowContainer>.captionHolder
 {
     position: absolute;
-    bottom: 30px;
-    left: 50px;
     z-index: 1;
     color: white;
-    font-size: 30px;
+    font-size: 50px;
     text-align: center;
-    width: 40%;
+    width: 100%;
     line-height: 50px;
     overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 }
 
 }
@@ -177,26 +178,20 @@ a {
     width: 100%;
 }
 
-.slideTextFromBottom {
-    animation-name: slideTextFromBottom;
+.zoomIn  {
+    animation-name: zoomIn ;
     animation-duration: .7s;
     animation-timing-function: ease-out;  
 }
 
-@keyframes slideTextFromBottom{
-   from{opacity: 0;margin-top: 100px}
-    to{opacity: 1; margin-top: 0;}
-}
-
-.slideTextFromTop {
-    animation-name: slideTextFromTop;
-    animation-duration: .7s;
-    animation-timing-function: ease-out;  
-}
-
-@keyframes slideTextFromTop{
-   from{opacity: 0;margin-top: -100px}
-    to{opacity: 1; margin-top: 0;}
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Agenda */

@@ -10,14 +10,57 @@
 {% block body %}
 <div class="img-background" style ="background-image: url('{{ artwork.picture }}')"></div>
 <div class="bloc-container">
-    <div class="artwork-container">
-        <div class="artwork-picture">
+    <div class="imgDesc">
+        <div class="artworkImg">
             <img src="{{ artwork.picture }}" alt="">
-            {# Commentaires  #}
+        </div>
+        <div class="about-artwork">
+            <div class="artworkName">
+                <h2 class="artistName" > 
+                    {% for artiste in artwork.artistes %}
+                        <a href="{{ path('show_artiste',{'id': artiste.id}) }}">{{ artiste.name }}</a>
+                    {% endfor %}
+                </h2>
+                <div class="underName"></div>
+                <h1>{{ artwork.name }}</h1>
+                <p class="about-content">{{ artwork.description }}</p> </div>
+                <div class="likeContainer">
+                    {% if app.user %}
+                        {% if artwork.users|length > 0 %}
+                            <h5 class="like-count"> + {{artwork.users|length}} </h5>
+                        {% else %}
+                            <h5 class="like-count"> {{artwork.users|length}} </h5>
+                        {% endif %}
+
+                        {% if app.user not in artwork.users %}
+                            <a href="{{path('like', {"id": artwork.id})}}">
+                                <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                            </a>
+                        {% else %}
+                        
+                            <a href="{{path('unlike', {'id': artwork.id})}}">
+                                <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="red" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        {% if artwork.users|length > 0 %}
+                            <h5 class="like-count"> + {{artwork.users|length}} </h5>
+                        {% else %}
+                            <h5 class="like-count"> {{artwork.users|length}} </h5>
+                        {% endif %}
+                        <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">
+                                <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                        </a>
+                        
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    <div class="commentMap">
+        <div class="Comment">
             <div class="comment-container">
-                
-                    <h4>{{artwork.comments | length}} Commentaires:</h4>
-                    {% for comment in artwork.comments %}
+                <h4>{{artwork.comments | length}} Commentaires:</h4>
+                {% for comment in artwork.comments %}
                     <div class="comment-content">
                     <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y à H:i') }}</small>)
                         {{ comment.content | raw }}
@@ -28,75 +71,26 @@
                         {% endif %}
                         </br>
                     </div>
-                    {% endfor %}
-                    
-                
+                {% endfor %}
                 {% if app.user %}
-                <button class="btn-comment" id="btn-comment">Commenter</button>
-                <div class="pushComment">
+                    <button class="btn-comment" id="btn-comment">Commenter</button>
+                    <div class="pushComment">
                         {{form_start(commentForm)}}
                         {{form_row(commentForm.content, {'label':' ', 'attr': {'placeholder': "Ajouter un commentaire"}})}}
                         <button type="submit" class="btn-comment">Envoyer</button>
                         {{form_end(commentForm)}} 
-                </div>
+                    </div>
                 {% else %}
-                <button class="btn-comment" id="btn-comment" aria-haspopup="dialog" aria-controls="dialog">Commenter</button>   
+                    <button class="btn-comment" id="btn-comment" aria-haspopup="dialog" aria-controls="dialog">Commenter</button>   
                 {% endif %}
-                
             </div>
-            {# Fin commentaires #}
         </div>
-        
-        <div class="artName">
-            <div class="about-artwork">
-                <h2 class="artistName" > 
-                    {% for artiste in artwork.artistes %}
-                        <a href="{{ path('show_artiste',{'id': artiste.id}) }}">{{ artiste.name }}</a>
-                    {% endfor %}
-                </h2>
-                <div class="underName"></div>
-                <h1>{{ artwork.name }}</h1>
-            </div>
-
-            <p class="about-content">{{ artwork.description }}</p> 
-
-            <div class="like-container">
-                {% if app.user %}
-                    {% if artwork.users|length > 0 %}
-                        <h5 class="like-count"> + {{artwork.users|length}} </h5>
-                    {% else %}
-                        <h5 class="like-count"> {{artwork.users|length}} </h5>
-                    {% endif %}
-
-                    {% if app.user not in artwork.users %}
-                        <a href="{{path('like', {"id": artwork.id})}}">
-                            <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-                        </a>
-                    {% else %}
-                    
-                        <a href="{{path('unlike', {'id': artwork.id})}}">
-                            <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="red" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-                        </a>
-                    {% endif %}
-                {% else %}
-                    {% if artwork.users|length > 0 %}
-                        <h5 class="like-count"> + {{artwork.users|length}} </h5>
-                    {% else %}
-                        <h5 class="like-count"> {{artwork.users|length}} </h5>
-                    {% endif %}
-                    <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">
-                            <svg width="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="grey" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-                    </a>
-                    
-                {% endif %}
-            </div>
-            {# Map #}
+        <div class="map">
             <div id="map-container"></div>
-            {# End Map #}
-        </div> 
+        </div>
     </div>
 </div>
-
+<script src="{{ asset('js/toggle.js') }}"></script>
 {% endblock %}
 {% block javascripts %}
 

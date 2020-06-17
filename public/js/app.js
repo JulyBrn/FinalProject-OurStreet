@@ -24,12 +24,12 @@ function moveSlide(n) {
         if (n>=slides.length) {n=0;}
         moveSlideAnimClass.forCurrent = "moveLeftCurrentSlide";
         moveSlideAnimClass.forNext = "moveLeftNextSlide";
-        slideTextAnimClass="slideTextFromTop";
+        slideTextAnimClass="zoomIn";
     } else if(n<slideIndex) {
         if(n<0){n=slides.length-1;}
         moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
         moveSlideAnimClass.forNext = "moveRightNextSlide";
-        slideTextAnimClass="slideTextFromBottom";
+        slideTextAnimClass="zoomIn";
 
     }
     if(n!=slideIndex) {
