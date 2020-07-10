@@ -121,9 +121,37 @@
          {% block body %}{% endblock %}
          </main>
     <footer>
-        <div class="under-main"></div>
+        <div class="under-main">
+        </div>
+        <div class="footerContainer">
+            <div class="leftFooter">
+                <h4>A propos de OurStreet</h4>
+                <p> Gardes les yeux ouvert pour contempler le monde tout en gardant l'esprit encore plus ouvert pour envisager un meilleurs mondes.</p>
 
-            <p>Ceci est un footer</p>
+            </div>
+            <div class="centerFooter">
+                <h4>Contact</h4>
+                    <a href="mailto:julybrn60@gmail.com">Mail</a>
+                <h4>Mentions légales</h4>
+                    <a href="/">Site</a>
+                <h4>Copyright</h4>
+                    <p>©JulyBrisson</p>
+            </div>
+            <div class="rightFooter">
+                <h4>Menu</h4>
+                <h5>Site</h5>
+                <ul>
+                   <li> <a href="{{path('home')}}" >Accueil</a> </li>
+                   <li> <a href="{{path('artistes')}}" >Artistes</a> </li>
+                   <li> <a href="{{path('artwork')}}" >Oeuvres</a> </li>
+                   <li> <a href="{{path('maps')}}" >Carte</a> </li>
+                </ul>
+                <h5>Compte</h5>
+                <ul>
+                    <li><a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Se connecter</a></li>
+                </ul>
+            </div>
+        </div>
     </footer>
         <script src="{{ asset('js/connect-modal.js') }}"></script>
         <script src="{{ asset('js/inscription-modal.js') }}"></script>

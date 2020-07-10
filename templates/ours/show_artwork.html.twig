@@ -122,7 +122,7 @@
                     // Create a marker for the found coordinates
                     var marker = L.marker([y_coor,x_coor]).addTo(map) // CAREFULL!!! The first position corresponds to the lat (y) and the second to the lon (x)
                     // Add a popup to said marker with the address found by geosearch (not the one from the user)
-                    marker.bindPopup("<b>{{artwork.name}}</b><br>"+label).openPopup();
+                    marker.bindPopup('<a href="{{ path('maps')}}"><b>{{artwork.name}}</b><br>'+label).openPopup();
                 };
             }, reason => {
                 console.log(reason); // Error!
