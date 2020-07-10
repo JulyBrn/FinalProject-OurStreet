@@ -17,10 +17,10 @@
             </svg>
             <div id="playPause" onclick="playPauseSlides()"></div>
             <div class="captionHolder"><p class="captionText zoomIn"></p></div>
-             {% for slider in slider %}
-                <a href="{{ slider.link }}"><div class="imageHolder">
-                    <img src="{{ slider.image }}"/>
-                    <p class="captionText">{{ slider.text }}</p>
+             {% for sliders in slider %}
+                <a href="{{ sliders.link }}"><div class="imageHolder">
+                    <img src="{{ sliders.image }}"/>
+                    <p class="captionText">{{ sliders.text }}</p>
                 </div></a>
             {% endfor %}
 

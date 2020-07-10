@@ -176,6 +176,7 @@ a {
 {
     margin: 0;
     width: 100%;
+    filter: drop-shadow(black 2px 4px 6px);
 }
 
 .zoomIn  {
