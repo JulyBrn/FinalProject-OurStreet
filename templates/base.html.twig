@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>{% block title %}OurStreet{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/base.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/footer.css') }}"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
         {# flavicon #}
@@ -121,36 +120,39 @@
          {% block body %}{% endblock %}
          </main>
     <footer>
-        <div class="under-main">
-        </div>
+    <div class="underMain"></div>
         <div class="footerContainer">
+        <div class="up">
             <div class="leftFooter">
-                <h4>A propos de OurStreet</h4>
                 <p> Gardes les yeux ouvert pour contempler le monde tout en gardant l'esprit encore plus ouvert pour envisager un meilleurs mondes.</p>
 
             </div>
-            <div class="centerFooter">
-                <h4>Contact</h4>
-                    <a href="mailto:julybrn60@gmail.com">Mail</a>
-                <h4>Mentions légales</h4>
-                    <a href="/">Site</a>
-                <h4>Copyright</h4>
-                    <p>©JulyBrisson</p>
-            </div>
             <div class="rightFooter">
-                <h4>Menu</h4>
-                <h5>Site</h5>
+            <div class="connectfooter">
+                <h5>Compte</h5>
+                <ul>
+                    <li><a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Se connecter</a></li>
+                </ul>
+            </div>
+            <div clas="navfooter">
                 <ul>
                    <li> <a href="{{path('home')}}" >Accueil</a> </li>
                    <li> <a href="{{path('artistes')}}" >Artistes</a> </li>
                    <li> <a href="{{path('artwork')}}" >Oeuvres</a> </li>
                    <li> <a href="{{path('maps')}}" >Carte</a> </li>
                 </ul>
-                <h5>Compte</h5>
-                <ul>
-                    <li><a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Se connecter</a></li>
-                </ul>
             </div>
+            </div>
+        </div>
+        <div class="down">
+        <div class="centerFooter">
+                <p>Contact :
+                    <a href="mailto:julybrn60@gmail.com">Mail</a></p>
+                <p>Mentions légales : 
+                    <a href="/">Site</a></p>
+                <p>Copyright : ©JulyBrisson</p>
+            </div>
+         </div>
         </div>
     </footer>
         <script src="{{ asset('js/connect-modal.js') }}"></script>

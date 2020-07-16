@@ -17,14 +17,20 @@
             </svg>
             <div id="playPause" onclick="playPauseSlides()"></div>
             <div class="captionHolder"><p class="captionText zoomIn"></p></div>
-             {% for sliders in slider %}
-                <a href="{{ sliders.link }}"><div class="imageHolder">
-                    <img src="{{ sliders.image }}"/>
-                    <p class="captionText">{{ sliders.text }}</p>
-                </div></a>
+
+            {% for sliders in slider %}
+                
+                <div class="imageHolder">
+                    <a class="captionLink">
+                        <img src="{{ sliders.image }}"/>
+                        <p class="captionText">{{ sliders.text }}</p>
+                    </a>
+                </div>
+                
             {% endfor %}
 
         </div>
+    
     </div>
     {# end Carousselle #}
     {# Event #}

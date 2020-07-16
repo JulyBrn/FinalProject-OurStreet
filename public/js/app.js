@@ -7,7 +7,15 @@ function initGallery() {
     captionText=document.querySelector(".captionHolder .captionText");
     captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
 
-    
+    link=document.querySelector('.captionLink');
+    link.setAttribute('href', "#");
+    link.style.zIndex= "100";
+    link.style.width="100%";
+    link.style.cursor="pointer";
+
+    console.log(link);
+
+
 
 }
 initGallery();
@@ -48,6 +56,7 @@ function moveSlide(n) {
         captionText.className="captionText "+slideTextAnimClass;
         captionText.innerText=slides[n].querySelector(".captionText").innerText;
         captionText.style.display="block";
+        link=slides[n];
     }
 }
 

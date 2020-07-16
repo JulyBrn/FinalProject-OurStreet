@@ -90,7 +90,7 @@ a {
 .underName {
     width: 80px;
     height: 2px;
-    background-color:blue;
+    background-color: white;
     margin-bottom: 30px;
 }
 
@@ -149,7 +149,7 @@ a img {
 .follow {
     background-color: white;
     border-radius: 3px;
-    color: blue;
+    color: #474d51;
     padding: 5px 10px;
     font-weight: 600;
 }

@@ -67,7 +67,7 @@ a {
 
 .header-main a:hover {
     color: white;
-    background-color: black;
+    background-color: #474d51;
 }
 
 .header-main a svg {
@@ -186,36 +186,61 @@ a {
  .footerContainer {
      width: 100%;
      display: flex;
-     flex-direction: row;
-     margin-top: 10px;
-     justify-content: space-around;
+     flex-direction: column;
+     background-color: white;
+     color: #474d51;
+     font-size: 15px;
  }
+
+ .up {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+ }
+
+ .down {
+    display: flex;
+    justify-content: center;
+    font-size: smaller;
+ }
+
+ .footerContainer a {
+     text-decoration: none;
+     color: #474d51;
+ }
+
+ .footerContainer a:hover {
+    text-decoration: none;
+    color: #51B7AE;
+}
 
  .leftFooter {
      width: 30%;
-     text-align: center;
  }
 
  .centerFooter {
-    width: 30%;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-around;
 }
 
 .rightFooter {
-    width: 30%;
-    text-align: right;
-   
-}
-
-.rightFooter ul {
-    text-align: right;
-}
-
-.leftFooter p{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     text-align: justify;
-    margin: 30px;
+    align-items: center;
 }
 
-footer {
-    background-color: #F7EEE5;
+.underMain{
+    width: 100%;
+    height: 1px;
+    background: #474d51;
 }
+
+

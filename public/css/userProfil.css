@@ -85,10 +85,12 @@ h3
 {
     height: auto;
     text-align: center;
+
 }
 .artisteFollow, .artworkliked
 {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
