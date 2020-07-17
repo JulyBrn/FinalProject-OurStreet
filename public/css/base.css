@@ -43,10 +43,14 @@ a {
     background: rgba(255, 255, 255, 0.5);                                                                                                                                                                                                                                                                                                                                                                                                           
 }
 
-.header-main h1 {
+.header-main h1  {
     flex: 1;
     margin-left: 20px;
     width: 50%;
+}
+
+.header-main h1 a {
+    color: #333;
 }
 
  .header-main nav {
@@ -56,7 +60,7 @@ a {
     width: 100%;
 }
 
-.header-main a {
+.header-main .navBar {
     color: #333;
     transition: 0.5s ease;
     font-size: 16px;
@@ -65,7 +69,7 @@ a {
     text-align: center;
 }
 
-.header-main a:hover {
+.header-main .navBar:hover {
     color: white;
     background-color: #474d51;
 }

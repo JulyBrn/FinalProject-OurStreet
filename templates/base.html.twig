@@ -29,25 +29,25 @@
 
     <body>
         <header class="header-main">
-            <h1>OurStreet</h1>
+            <h1><a href="/">OurStreet</a></h1>
                 <nav>
-                    <a href="{{path('home')}}">Accueil</a>
-                    <a href="{{path('artistes')}}">Artistes</a>
-                    <a href="{{path('artwork')}}">Oeuvres</a>
-                    <a href="{{path('maps')}}">Carte</a>
+                    <a href="{{path('home')}}"class="navBar">Accueil</a>
+                    <a href="{{path('artistes')}}"class="navBar">Artistes</a>
+                    <a href="{{path('artwork')}}"class="navBar">Oeuvres</a>
+                    <a href="{{path('maps')}}"class="navBar">Carte</a>
 
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="/adminOursStreetBackEnd" target="_blank">Admin</a>
+                        <a href="/adminOursStreetBackEnd" target="_blank" class="navBar">Admin</a>
                     {% endif %}
 
                     {% if app.user %}
-                        <a href="{{path('profil', {"id": app.user.id})}}">Profil </a>
+                        <a href="{{path('profil', {"id": app.user.id})}}" class="navBar">Profil </a>
                         
-                        <a href="{{path('logout')}}">Se déconnecter</a>
+                        <a href="{{path('logout')}}" class="navBar">Se déconnecter</a>
 
                     {% else %}
 
-                        <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog">Se connecter</a>
+                        <a href="#" role="button" aria-haspopup="dialog" aria-controls="dialog" class="navBar">Se connecter</a>
                     
                     {% endif %}
                     

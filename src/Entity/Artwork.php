@@ -5,7 +5,8 @@ namespace App\Entity;
 use App\Entity\Artiste;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArtworkRepository")
@@ -53,6 +54,7 @@ class Artwork
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adress;
+
 
     public function __construct()
     {
@@ -204,5 +206,4 @@ class Artwork
 
         return $this;
     }
-
 }

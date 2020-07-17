@@ -16,12 +16,13 @@
                 </path>
             </svg>
             <div id="playPause" onclick="playPauseSlides()"></div>
+            <a href="/" class="captionLink captionLinkSlide">
             <div class="captionHolder"><p class="captionText zoomIn"></p></div>
-
+            </a>
             {% for sliders in slider %}
                 
                 <div class="imageHolder">
-                    <a class="captionLink">
+                    <a class="captionLink" href="{{ sliders.Link }}">
                         <img src="{{ sliders.image }}"/>
                         <p class="captionText">{{ sliders.text }}</p>
                     </a>

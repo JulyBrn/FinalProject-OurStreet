@@ -58,7 +58,7 @@ a {
     position: absolute;
     background-image: url("/img/playPause.png");
     background-repeat: no-repeat;
-    z-index: 5;
+    z-index: 1000;
     background-size: cover;
     margin: 5px;
     cursor: pointer;
@@ -86,18 +86,19 @@ a {
 {
     position: absolute;
     top: 50%;
-    z-index: 10;
+    z-index: 1000;
     left: 3%;
     color: white;
     opacity: 0.7;
-    cursor: pointer;                                                                                                                                                                                                                                                        
+    cursor: pointer; 
+
 }
 
 #nextBtn
 {
     position: absolute;
     top: 50%;
-    z-index: 10;
+    z-index: 1000;
     right: 3%;
     color: white;
     opacity: 0.7;
@@ -150,7 +151,7 @@ a {
     to {margin-left: 0%;opacity: 1;}
 }
 
-.galleryContainer .slideShowContainer>.captionHolder
+.galleryContainer .slideShowContainer .captionHolder
 {
     position: absolute;
     z-index: 1;
@@ -166,7 +167,7 @@ a {
     height: 100%;
 }
 
-.galleryContainer .slideShowContainer>.captionHolder>.captionText
+.galleryContainer .slideShowContainer .captionHolder .captionText
 {
     margin: 0;
     width: 100%;
@@ -189,6 +190,14 @@ a {
     }
 }
 
+.captionLinkSlide {
+    z-index: 999;
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    height: 100%;
+}
 /* Agenda */
 
 .eventContainer
