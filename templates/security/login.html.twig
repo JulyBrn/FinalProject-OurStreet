@@ -24,18 +24,16 @@
 
             <input type="email" name="email" id="email" placeholder="Email" class="email" required>
             <input type="password" name="password" id="password" placeholder="Mot de passe" class="password" required>
+            
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            {#
-                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                See https://symfony.com/doc/current/security/remember_me.html
 
                 <div class="checkbox mb-3">
                     <label>
-                        <input type="checkbox" name="_remember_me"> Remember me
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
                     </label>
                 </div>
-            #}
+           
 
             <button class="dialog-btn" type="submit">Se Connecter</button>
         </form>

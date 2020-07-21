@@ -13,4 +13,32 @@
     .artistRight, .artistLeft {
         width: 80% !important;
     }
+    
+    /* Artwork page */
+
+    .imgDesc {
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .artworkImg, .about-artwork {
+        width: 90% !important;
+        padding-top: 30px;
+    }
+
+    /* Home page */
+
+    .galleryContainer .slideShowContainer .captionHolder {
+        font-size: 30px !important;
+    }
+
+    .eventContent {
+        width: 50% !important;
+    }
+
+    .allEvent {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
  }

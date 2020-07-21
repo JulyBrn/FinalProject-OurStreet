@@ -64,6 +64,7 @@
 
       .containerProfilPage {
         flex-direction: column !important;
+        align-items: center;
       }
 
       .FormProfilPage {
@@ -72,12 +73,12 @@
       }
 
       .ArtisteFolloWProfil {
-        width: 100% !important;
+        width: 80% !important;
         margin-bottom: 50px !important;
       }
 
       .imageLikedProfil {
-        width: 100% !important;
+        width: 80% !important;
       }
 
       /* ArtworkPage */
@@ -94,6 +95,7 @@
 
       .map {
         width: 90% !important;
+        padding-top: 30px;
       }
 
       #map-container{

@@ -31,6 +31,10 @@ security:
             logout:
                 path: logout
                 target: /
+            
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800
 
 
             # activate different ways to authenticate
