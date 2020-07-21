@@ -24,11 +24,11 @@ function main(){
   
   function menuDisplay(state, items){
     if(state=="show"){
-      for(var i=1; i<items.length; i++){
+      for(var i=0; i<items.length; i++){
         items[i].classList.add("show");
       }
     } else {
-      for(var i=1; i<items.length; i++){
+      for(var i=0; i<items.length; i++){
         items[i].classList.remove("show");
       }
     }

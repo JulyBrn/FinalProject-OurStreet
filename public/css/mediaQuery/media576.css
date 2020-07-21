@@ -1,0 +1,16 @@
+@media(max-width: 576px) {
+    /* Footer */
+
+    .box-left {
+        width: 90% !important;
+    }
+    /* Artist Page */
+    .artist-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .artistRight, .artistLeft {
+        width: 80% !important;
+    }
+ }

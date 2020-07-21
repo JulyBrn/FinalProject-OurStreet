@@ -8,7 +8,7 @@
 {% block body %}
  <div class="content" style ="background-image: url('{{ asset('img/thomas-heintz-unsplash.jpg') }}')">
     <div class="artist-container">
-    <div class="left">
+    <div class="artistLeft">
         <img src="{{ artiste.image }}" alt="Elephant at sunset">
         <div class="followArtist">
             <h4> Nombre de Followers: {{artiste.follower|length}} 
@@ -22,7 +22,7 @@
         </div>  
     </div>
 
-    <div class="right">
+    <div class="artistRight">
         <h1>{{ artiste.name }}</h1>
         <div class="underName"></div>
         <p>{{ artiste.content | raw }}</p>
