@@ -1,38 +1,4 @@
-@charset "utf-8";
-
-/* Start reset */
-
-* {
-	margin: 0;
-	padding: 0;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-}
-
-html,body {
-    height: 100%;
-    width: 100%;
-    position: relative;
-}
-
-body {
-    background: rgba(0, 0, 0, 0.03);
-    color: #333;
-    font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-ul {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-/* End Reset */
-
-.container
+.containerProfilPage
 {
     width: 100%;
     display: flex;
@@ -42,7 +8,7 @@ a {
 
 }
 
-.left
+.FormProfilPage
 {
     width: 40%;
     display: flex;
@@ -51,12 +17,12 @@ a {
     
 }
 
-.center
+.ArtisteFolloWProfil
 {
     width: 26%;
 }
 
-.right
+.imageLikedProfil
 {
     width: 26%;
     

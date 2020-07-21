@@ -7,8 +7,8 @@
 {% block body %}
 
 <h1 class="username">{{app.user.name}} {{app.user.surname}}</h1>
-<div class="container">
-    <div class="left">
+<div class="containerProfilPage">
+    <div class="FormProfilPage">
      <h3>Modifier mes informations</h3>
         {{form_start(form)}}
             {{form_row(form.surname, {'label':' ','attr': {'placeholder': 'Prénom', 'class': 'name'}})}}
@@ -19,7 +19,7 @@
             <button type="submit"class="dialog-btn">Modifier</button>
         {{form_end(form)}}
     </div>
-    <div class="center">
+    <div class="ArtisteFolloWProfil">
         <div class="artisteFollow-content">
         <h3> Artistes que je suis</h3>
             <div class="artisteFollow">
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="right">
+    <div class="imageLikedProfil">
     
         <div class="artworkliked-content">
         <h3> Les dernière oeuvres aimées </h3>

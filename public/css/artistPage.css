@@ -1,59 +1,15 @@
-@charset "utf-8";
-
-/* Start reset */
-
-* {
-	margin: 0;
-	padding: 0;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-}
-
-html,body {
-    height: 100%;
-    width: 100%;
-    position: relative;
-}
-
-body {
-    background: rgba(0, 0, 0, 0.03);
-    color: #333;
-    font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-ul {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-/* End Reset */
-
 /* ARTIST SECTION */
 
 .content{
-    position: absolute;
-    top: 100px;
-}
-
-.background-container{
     width: 100%;
-    height: 1100px;
     background-size: cover;
     background-position: center;
-    position: static;
-    filter: brightness(0.6);
 }
 
 .artist-container {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    height: calc( 100vh - 60px);
-    margin-top: 50px;
     
 }
 
@@ -75,7 +31,7 @@ a {
     width: 45%;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 
 .followArtist p {
@@ -90,24 +46,24 @@ a {
 .underName {
     width: 80px;
     height: 2px;
-    background-color: white;
+    background-color:#51B7AE;
     margin-bottom: 30px;
 }
 
 .right p {
     width: 90%;
-    color: white;
+    color: #333;
     font-size: 20px;
     text-align: justify;
 }
 
 .right h1 {
     font-size: 55px;
-    color: white;
+    color: #333;
 }
 
 .followArtist h4 {
-    color: white;
+    color: #333;
     font-size: 18px;
 }
 
@@ -124,8 +80,8 @@ a {
 }
 
 .artwork-img {
-    margin: 10px;
-    border: 1px solid black;
+    margin: 14px;
+    border: 1px solid #333;
     width: 200px;
     height: 200px;
 }
@@ -141,15 +97,15 @@ a img {
 
 .gallery {
     text-align: center;
-    margin-top: 90px;
+    margin-top: 50px;
     font-size: 50px;
-    color: white;
+    color: #333;
 }
 
 .follow {
-    background-color: white;
+    background-color: #474d51;
     border-radius: 3px;
-    color: #474d51;
+    color: white;
     padding: 5px 10px;
     font-weight: 600;
 }

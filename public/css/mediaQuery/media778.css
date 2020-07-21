@@ -1,0 +1,105 @@
+@media(max-width: 778px) { 
+
+  /* HOME PAGE */
+
+   /* Navbar --> Menu Burger */
+    .header-main {
+        width: 100%;
+        height: auto;
+      }
+      .header-main nav {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .navBar {
+        display: none;
+        justify-content: center;
+        width: 15%;
+        font-weight: bold;
+      }
+      h1 a {
+        display: inline-flex;
+        width: 80%;
+        margin-left: 0;
+        margin-right: auto;
+      }
+      .navBar a {
+        color: #fff;
+        text-decoration: none;
+        padding:0 0.5em;
+      }
+      .mobile-menu {
+      position: absolute;
+      z-index: 1000;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 30px;
+     }
+    
+      .menu-icon {
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .hide {
+        display: none;
+      }
+      .show {
+        display: inline-flex;
+      }
+
+      /* Events */
+
+      .eventTitle {
+        font-size: 45px !important;
+      }
+
+      .eventContent {
+        width: 35% !important;
+      }
+
+      /* User Profil */
+
+      .containerProfilPage {
+        flex-direction: column !important;
+      }
+
+      .FormProfilPage {
+        width: 100% !important;
+        margin-bottom: 50px !important;
+      }
+
+      .ArtisteFolloWProfil {
+        width: 100% !important;
+        margin-bottom: 50px !important;
+      }
+
+      .imageLikedProfil {
+        width: 100% !important;
+      }
+
+      /* ArtworkPage */
+
+      .commentMap {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+      }
+
+      .Comment {
+        width: 100% !important;
+        margin-top: 50px !important;
+      }
+
+      .map {
+        width: 90% !important;
+      }
+
+      #map-container{
+        width: 100% !important; 
+      }
+
+      
+}

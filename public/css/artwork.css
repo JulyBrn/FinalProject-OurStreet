@@ -1,4 +1,3 @@
-@charset "utf-8";
 @keyframes slideDown{
     from {
         transform: translate(0px, -110px);
@@ -20,53 +19,14 @@
         opacity: 0;
     }
 }
-/* Start reset */
-
-* {
-	margin: 0;
-	padding: 0;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-}
-
-html,body {
-    height: 100%;
-    width: 100%;
-    position: relative;
-}
-
-body {
-    background: rgba(0, 0, 0, 0.03);
-    color: #333;
-    font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-ul {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-/* End Reset */
 
 /* Artwork Containe */
 
-.img-background {
+.bloc-container {
     width: 100%;
-    height: 1000px;
-    position: static;
-    filter: brightness(0.4);
     background-size: cover;
     background-position: center;
-}
-
-.bloc-container {
-    position: absolute;
-    width: 100%;
-    top: 50px;
+   
 }
 /* Image */
 .imgDesc {
@@ -86,12 +46,7 @@ a {
 }
 
 .artworkImg img{
-    width: 450px;
-    transition: 0.4s;
-}
-
-.artworkImg img:hover {
-    transform: scale(1.5);
+    width: 100%;
 }
 
 /* Description */
@@ -104,7 +59,7 @@ a {
 }
 
 .artistName a {
-    color: white;
+    color: #333;
 }
 
 .about-content {
@@ -116,19 +71,19 @@ a {
 .underName {
     width: 10%;
     height: 2px;
-    background-color:blue;
+    background-color:#51B7AE;
 }
 
 .about-artwork h1 {
     padding-top: 10px;
-    color: white;
+    color: #333;
     font-size: 40px;
 }
 
 .about-content {
     width: 90%;
     text-align: justify;
-    color: white;
+    color: #333;
     font-size: 20px;
     padding-top: 20px;
 
@@ -144,7 +99,7 @@ a {
 .like-count {
     margin-left: 8px;
     font-size: 24px;
-    color: white;
+    color: #333;
 }
 
 .commentMap {
@@ -152,6 +107,7 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 50px;
 }
 
 #map-container {
@@ -174,20 +130,20 @@ textarea {
     height: 60px;
     border-radius: 3px;
     opacity: 0.9;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #333;
     background-color: transparent;
-    color: white;
+    color: #333;
 }
 
 textarea::placeholder{
-    color: white;
+    color: #333;
     font-family: sans-serif;
 }
 
 .formbtn {
     cursor: pointer;
     font-size: 15px;
-    color: #fff;
+    color: #333;
     opacity: 0.9;
     border: 1px solid #333;
     padding: 6px;
@@ -202,8 +158,8 @@ textarea::placeholder{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
-    border: 1px dashed white;
+    color: #333;
+    border: 1px dashed #333;
     padding: 10px;
 }
 
@@ -228,8 +184,8 @@ textarea::placeholder{
 }
 
 .pushComment a {
-    color: white;
-    background: blue;
+    color: #333;
+    background: #51B7AE;
     border-radius: 3px;
     text-align: center;
     padding: 5px;
@@ -262,10 +218,10 @@ textarea::placeholder{
     border-radius: 3px;
     margin-top: 20px;
     font-size: 18px;
-    color: white;
+    color: #333;
     background: transparent;
     opacity: 0.8;
-    border: 1px solid white;
+    border: 1px solid #333;
     padding: 0 10px;
 } 
 
