@@ -110,6 +110,25 @@ a img {
     font-weight: 600;
 }
 
+/* Social Media */
+
+.artistFacebook {
+    width: 38px;
+    color: #0d8bf1;
+    margin-right: 10px;
+}
+
+.artistInsta {
+    width: 45px;
+}
+
+.socialMedia {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 
 
 
