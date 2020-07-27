@@ -54,6 +54,11 @@ class Artiste
      */
     private $instagram;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $webSite;
+
    
 
     public function __construct()
@@ -184,6 +189,18 @@ class Artiste
     public function setInstagram(?string $instagram): self
     {
         $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    public function getWebSite(): ?string
+    {
+        return $this->webSite;
+    }
+
+    public function setWebSite(?string $webSite): self
+    {
+        $this->webSite = $webSite;
 
         return $this;
     }

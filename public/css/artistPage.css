@@ -120,6 +120,7 @@ a img {
 
 .artistInsta {
     width: 45px;
+    margin-right: 10px;
 }
 
 .socialMedia {
@@ -127,6 +128,11 @@ a img {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+.artistWebSite {
+    width: 30px;
+    color: #51B7AE;
 }
 
 
