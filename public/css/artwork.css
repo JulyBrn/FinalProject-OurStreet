@@ -235,3 +235,9 @@ textarea::placeholder{
 .map{
     width: 45%;
 }
+
+.fb_iframe_widget {
+    width: 90% !important;
+    text-align: right !important;
+    margin-top: 20px;
+}
