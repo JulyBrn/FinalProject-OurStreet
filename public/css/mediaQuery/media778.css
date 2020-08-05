@@ -8,10 +8,12 @@
         height: auto;
       }
       .header-main nav {
-        position: relative;
+        position: fixed;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        z-index: 2000;
+        background-color: white;
       }
       .navBar {
         display: none;
