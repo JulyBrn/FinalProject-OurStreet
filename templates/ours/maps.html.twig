@@ -26,7 +26,7 @@
         }).addTo(map);
     {% for pt in point %}
     
-        // Récupère le fournisseur, dans ce cas le fournisseur OpenStreetMap (OSM).
+        // Récupère le fournisseur, dans ce cas le fournisseur OpenStreetMap(OSM)
         var provider = new window.GeoSearch.OpenStreetMapProvider();
 
         // Requête pour l'adresse
@@ -45,7 +45,7 @@
                 marker.bindPopup('<a href="{{ path('show_artwork',{'id': pt.id}) }}"><b>{{ pt.name }}</b><br/><img src="{{ pt.picture }}" style="width:100px;"</img><br/></a>'+label).openPopup();
             };
         }, reason => {
-            console.log(reason); // Error!
+            console.log(reason); // Erreur!
             } );
 
     {% endfor %}

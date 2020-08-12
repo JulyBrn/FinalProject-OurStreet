@@ -64,7 +64,7 @@
                 <h4>{{artwork.comments | length}} Commentaires:</h4>
                 {% for comment in artwork.comments %}
                     <div class="comment-content">
-                    <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y à H:i') }}</small>)
+                    <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y') }}</small>)
                         {{ comment.content | raw }}
                         {% if app.user == comment.user  %}
                             <a href="{{path('removeComment', {"id": comment.id})}}">
@@ -108,26 +108,25 @@
         minZoom: 1,
         maxZoom: 20
         }).addTo(map);
-
+        
         var query_addr = "{{artwork.adress}}";
-            // Get the provider, in this case the OpenStreetMap (OSM) provider.
+            // Récupère le fournisseur, dans ce cas le fournisseur OpenStreetMap
             var provider = new window.GeoSearch.OpenStreetMapProvider()
-            // Query for the address
+            // Requête pour l'adresse
             var query_promise = provider.search({ query: query_addr});
-            // Wait until we have an answer on the Promise
             query_promise.then( value => {
                 for(i=0;i < value.length; i++){
-                // Success!
-                    var x_coor = value[i].x;
-                    var y_coor = value[i].y;
+               // Succes!
+                    var x_coor = value[i].x; //longitude
+                    var y_coor = value[i].y; //latitude
                     var label = value[i].label;
-                    // Create a marker for the found coordinates
-                    var marker = L.marker([y_coor,x_coor]).addTo(map) // CAREFULL!!! The first position corresponds to the lat (y) and the second to the lon (x)
-                    // Add a popup to said marker with the address found by geosearch (not the one from the user)
+                    // Créer un marqueur pour les coordonnées trouvées
+                    var marker = L.marker([y_coor,x_coor]).addTo(map) 
+                    // Ajoute une fenêtre un popup avec l'adresse trouvée par geosearch
                     marker.bindPopup('<a href="{{ path('maps')}}"><b>{{artwork.name}}</b><br>'+label).openPopup();
                 };
             }, reason => {
-                console.log(reason); // Error!
+                console.log(reason); // Erreur!
                 } );
     </script>
 
