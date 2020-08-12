@@ -241,3 +241,7 @@ textarea::placeholder{
     text-align: right !important;
     margin-top: 20px;
 }
+
+.hourComment {
+    font-size: 10px;
+}

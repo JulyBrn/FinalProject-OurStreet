@@ -64,7 +64,7 @@
                 <h4>{{artwork.comments | length}} Commentaires:</h4>
                 {% for comment in artwork.comments %}
                     <div class="comment-content">
-                    <strong> {{ comment.user.name}}</strong> (<small>{{ comment.createdAt | date ('d/m/Y') }}</small>)
+                    <strong> {{ comment.user.name}}</strong> <span class="hourComment">{{ comment.createdAt | date ('d/m/Y') }}</span>
                         {{ comment.content | raw }}
                         {% if app.user == comment.user  %}
                             <a href="{{path('removeComment', {"id": comment.id})}}">
