@@ -158,7 +158,8 @@ class OursController extends AbstractController
 
         $manager->persist($user);
         $manager->flush();
-
+        
+        $this->addFlash("notice", "success!");
         return $this->redirectToRoute('show_artiste',[
             'id' => $id
             ]);

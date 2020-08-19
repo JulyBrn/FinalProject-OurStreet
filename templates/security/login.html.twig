@@ -1,42 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}"/>
 {% endblock %}
 
 {% block body %}
-<div class="connectContainer">
-    <div class="connectForm">
+	<div class="connectContainer">
+		<div class="connectForm">
 
-        <h2 id="dialog-title">Se Connecter</h2>
+			<h2 id="dialog-title">Se Connecter</h2>
 
-            <div class="signin">
-                <p id="dialog-desc">Pas encore de compte? </p>
-                <a href="#" role="button" aria-haspopup="dialog1" aria-controls="dialog1"> S'inscrire</a>
-            </div>
+			<div class="signin">
+				<p id="dialog-desc">Pas encore de compte?
+				</p>
+				<a href="#" role="button" aria-haspopup="dialog1" aria-controls="dialog1">
+					S'inscrire</a>
+			</div>
 
-        <form method="post" action="{{ path('login') }}" class="dialog-form">
-            {% if error %}
-                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+			<form method="post" action="{{ path('login') }}" class="dialog-form">
+				{% if error %}
+					<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
 
-            <input type="email" name="email" id="email" placeholder="Email" class="email" required>
-            <input type="password" name="password" id="password" placeholder="Mot de passe" class="password" required>
-            
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<input type="email" name="email" id="email" placeholder="Email" class="email" required>
+				<input type="password" name="password" id="password" placeholder="Mot de passe" class="password" required>
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
-                    </label>
-                </div>
-           
+				<div class="checkbox mb-3">
+					<label>
+						<input type="checkbox" name="_remember_me">
+						Se souvenir de moi
+					</label>
+				</div>
 
-            <button class="dialog-btn" type="submit">Se Connecter</button>
-        </form>
-    </div>
-</div>
+
+				<button class="dialog-btn" type="submit">Se Connecter</button>
+			</form>
+		</div>
+	</div>
 {% endblock %}

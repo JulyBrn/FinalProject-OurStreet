@@ -54,18 +54,6 @@ class SecurityController extends AbstractController
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
-        }
-
-        if($request->getContent() !== NULL ){
-
-            $hash = $encoder->encodePassword($user, $request->request->get('password'));
-            $user->setName($request->request->get('name'))
-                 ->setSurname($request->request->get('surname'))
-                 ->setEmail( $request->request->get('email'))
-                 ->setPassword($hash);
-
-            $manager->persist($user);
-            $manager->flush();
 
             return $this->redirect($request->request->get('_target_path'));
         }
